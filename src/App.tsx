@@ -1,5 +1,69 @@
 import React from "react";
 
 export default function App() {
-  return <div className=""></div>;
+  return (
+    <div className="bg-gradient-to-t bg-fixed bg-back-light from-back-light to-back-dark h-full min-h-screen text-6xl text-white">
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+      <div>trerteter</div>
+    </div>
+  );
 }
