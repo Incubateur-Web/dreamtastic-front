@@ -5,7 +5,7 @@ import { generateUser } from "./User";
 export const generateDream = (): Dream => ({
   id: random.uuid(),
   createdAt: date.past(),
-  updatedAt: date.past(),
+  updatedAt: date.soon(),
   author: generateUser(),
   content: random.words(200),
   comments: [],
