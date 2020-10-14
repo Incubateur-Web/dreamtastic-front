@@ -14318,9 +14318,6 @@ video {
 .animate-bounce {
   animation: bounce 1s infinite;
 }
-.header-container > * {
-  transition: all 0.15s ease-in-out;
-}
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

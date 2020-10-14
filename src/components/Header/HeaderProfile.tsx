@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import HeaderProfileSubmenu from "./HeaderProfileSubmenu";
+import { useClickAway } from "react-use";
 
 export default function HeaderProfile() {
-  const [isConnected, setIsConnected] = useState(true);
+  const [isConnected, setIsConnected] = useState(false);
+  const [displaySubMenu, setDisplaySubMenu] = useState(false);
+  const ref = useRef(null);
+
+  useClickAway(ref, () => {
+    setDisplaySubMenu(false);
+  });
 
   const handleConnection = () => {
-    setIsConnected((prevState) => !prevState);
+    setIsConnected(true);
+  };
+
+  const handleDisconnection = () => {
+    setIsConnected(false);
   };
 
   return (
-    <div className="mx-auto flex cursor-pointer transition duration-150">
+    <div
+      className={
+        "mx-auto flex cursor-pointer transition duration-150 " +
+        (!isConnected && "my-auto")
+      }
+    >
       {isConnected ? (
-        <div className="relative">
+        <div
+          ref={ref}
+          className="relative"
+          onClick={() => setDisplaySubMenu((prevState) => !prevState)}
+        >
           <div className="hover:opacity-75 h-full flex">
             <div className="w-8 h-8 my-auto rounded-full flex overflow-hidden">
               <img
@@ -27,7 +47,10 @@ export default function HeaderProfile() {
               <FontAwesomeIcon icon={faCaretDown} />
             </div>
           </div>
-          <HeaderProfileSubmenu />
+          <HeaderProfileSubmenu
+            visible={displaySubMenu}
+            onDisconnection={handleDisconnection}
+          />
         </div>
       ) : (
         <>
