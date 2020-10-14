@@ -13,7 +13,7 @@ export default function Header() {
           <HeaderLink path={"/"} text={"Third link"} />
         </div>
       </div>
-      <div className="my-auto mx-2 p-2 flex-initial w-full md:w-auto flex">
+      <div className="mx-2 px-2 flex-initial w-full md:w-auto flex">
         <HeaderProfile />
       </div>
     </div>
