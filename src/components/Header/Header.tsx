@@ -8,9 +8,9 @@ export default function Header() {
       <div className="flex md:flex-row flex-col flex-1">
         <div className="text-2xl mx-2 my-auto">Dreamtastic</div>
         <div className="flex flex-col md:flex-row w-full text-center justify-between md:justify-start">
-          <HeaderLink path={"/"} text={"First link"} />
-          <HeaderLink path={"/"} text={"Second link"} />
-          <HeaderLink path={"/"} text={"Third link"} />
+          <HeaderLink path={"/"} text={"First link"} active={false} />
+          <HeaderLink path={"/"} text={"Second link"} active={false} />
+          <HeaderLink path={"/"} text={"Third link"} active={true} />
         </div>
       </div>
       <div className="mx-2 px-2 flex-initial w-full md:w-auto flex">
