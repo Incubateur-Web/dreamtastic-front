@@ -33,8 +33,15 @@ export default function DreamCard({ dream }: DreamCardProps) {
           </Link>
         )}
       </div>
-      <div className="text-justify px-6 pb-3">
+      <div className="text-justify px-6 py-3">
         <span>{dream.content}</span>
+      </div>
+      {/* Reactions */}
+      <div className="px-6 pb-3 flex">
+        <span>
+          {dream.comments.length > 1 && <>{dream.comments.length} Comments</>}
+          {dream.comments.length <= 1 && <>{dream.comments.length} Comment</>}
+        </span>
       </div>
     </div>
   );

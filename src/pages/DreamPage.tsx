@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useRouteMatch } from "react-router";
+import CommentCard from "../components/CommentCard";
 import DreamCard from "../components/DreamCard";
 import DreamCardSkeleton from "../components/skeleton/DreamCardSkeleton";
 import DefaultLayout from "../layouts/DefaultLayout";
@@ -21,15 +22,23 @@ export default function DreamPage() {
     }
   }, [params, dream]);
 
+  if (!dream) {
+    return (
+      <DefaultLayout>
+        <DreamCardSkeleton />
+      </DefaultLayout>
+    );
+  }
   return (
     <DefaultLayout>
-      {!dream ? (
-        <DreamCardSkeleton />
-      ) : (
-        <div className="space-y-4">
-          <DreamCard dream={dream} />
+      <div className="space-y-6">
+        <DreamCard dream={dream} />
+        <div className="text-black bg-gray-200 rounded-lg divide-y-2 divide-gray-400">
+          {dream.comments.map((comment) => (
+            <CommentCard key={comment.id} comment={comment} />
+          ))}
         </div>
-      )}
+      </div>
     </DefaultLayout>
   );
 }
