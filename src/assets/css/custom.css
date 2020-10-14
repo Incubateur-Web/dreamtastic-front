@@ -1,0 +1,7 @@
+.active-bounce-button {
+  transition: all 0.15s ease-in-out;
+  user-select: none;
+}
+.active-bounce-button:active {
+  transform: scale(0.95);
+}

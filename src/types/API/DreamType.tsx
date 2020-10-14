@@ -9,6 +9,7 @@ export default class Dream extends BaseTable {
   isAnonymous!: boolean;
   isPublished!: boolean;
   content!: string;
+  imagePath!: string;
   topic!: Topic;
   type!: Type;
   title!: string;
