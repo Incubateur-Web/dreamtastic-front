@@ -1,4 +1,4 @@
-import User from "../API/UserType";
+import { User } from "../API/UserType";
 
 export type LoginInput = Pick<User, "username"> & { password: string };
 

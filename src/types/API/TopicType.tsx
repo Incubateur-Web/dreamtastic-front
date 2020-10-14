@@ -1,6 +1,6 @@
-import BaseTable from "./BaseType";
+import { BaseTable } from "./BaseType";
 
-export default class Topic extends BaseTable {
-  name!: string;
-  color!: string;
-}
+export type Topic = {
+  name: string;
+  color: string;
+};

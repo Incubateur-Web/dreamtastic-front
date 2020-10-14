@@ -1,5 +1,5 @@
-export default class BaseTable {
-  id!: string;
-  createdAt!: Date;
-  updatedAt!: Date;
-}
+export type BaseTable<T> = T & {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

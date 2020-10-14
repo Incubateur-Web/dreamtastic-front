@@ -1,6 +1,6 @@
-import BaseTable from "./BaseType";
+import { BaseTable } from "./BaseType";
 
-export default class Type extends BaseTable {
-  name!: string;
-  color!: string;
-}
+export type Type = {
+  name: string;
+  color: string;
+};
