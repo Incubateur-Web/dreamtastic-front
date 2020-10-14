@@ -1,69 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
 
 export default function App() {
   return (
-    <div className="bg-gradient-to-t bg-fixed bg-back-light from-back-light to-back-dark h-full min-h-screen text-6xl text-white">
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-      <div>trerteter</div>
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<>loading...</>}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+        </Switch>
+      </Suspense>
+    </BrowserRouter>
   );
 }
