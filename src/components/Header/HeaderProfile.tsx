@@ -14,10 +14,12 @@ export default function HeaderProfile() {
   });
 
   const handleConnection = () => {
+    //TODO : connect the user
     setIsConnected(true);
   };
 
   const handleDisconnection = () => {
+    //TODO : disconnect the user
     setIsConnected(false);
   };
 

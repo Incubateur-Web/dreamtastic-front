@@ -11,7 +11,8 @@ export default function HeaderProfileSubmenu(props: Props) {
   return (
     <div
       className={
-        "absolute bg-gray-800 w-48 " + (props.visible ? "block" : "hidden")
+        "absolute bg-gray-800 w-48 right-0 " +
+        (props.visible ? "block" : "hidden")
       }
     >
       <div className="profile-submenu-link px-5 w-full py-2 hover:bg-white transition duration-150 hover:text-gray-800">
