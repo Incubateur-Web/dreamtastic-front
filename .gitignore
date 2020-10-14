@@ -12,3 +12,5 @@
 .env.production.local
 
 /src/assets/css/index.css
+
+/.idea
