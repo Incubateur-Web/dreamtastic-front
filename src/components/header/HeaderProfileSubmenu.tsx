@@ -7,12 +7,14 @@ type Props = {
   onDisconnection(): any;
 };
 
-export default function HeaderProfileSubmenu(props: Props) {
+export default function HeaderProfileSubmenu({
+  visible,
+  onDisconnection,
+}: Props) {
   return (
     <div
       className={
-        "absolute bg-gray-800 w-48 right-0 " +
-        (props.visible ? "block" : "hidden")
+        "absolute bg-gray-800 w-48 right-0 " + (visible ? "block" : "hidden")
       }
     >
       <div className="profile-submenu-link px-5 w-full py-2 hover:bg-white transition duration-150 hover:text-gray-800">
@@ -22,7 +24,7 @@ export default function HeaderProfileSubmenu(props: Props) {
         <FontAwesomeIcon className="mr-1" icon={faCog} /> Paramètres
       </div>
       <div
-        onClick={props.onDisconnection}
+        onClick={onDisconnection}
         className="profile-submenu-link px-5 py-2 hover:bg-white transition duration-150 hover:text-gray-800"
       >
         <FontAwesomeIcon className="mr-1" icon={faSignOutAlt} /> Déconnexion
