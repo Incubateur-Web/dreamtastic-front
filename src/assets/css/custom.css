@@ -1,0 +1,13 @@
+.active-bounce-button {
+  transition: all 0.15s ease-in-out;
+  user-select: none;
+}
+.active-bounce-button:active {
+  transform: scale(0.95);
+}
+
+.loader {
+  border: solid 4px transparent;
+  border-top-color: white;
+  border-bottom-color: white;
+}
