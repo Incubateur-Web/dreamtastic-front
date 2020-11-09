@@ -5,6 +5,9 @@ module.exports = {
         "back-light": "#27427b",
         "back-dark": "#111838",
       },
+      backgroundColor: {
+        "blue-night": "#384c91",
+      },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
       },
