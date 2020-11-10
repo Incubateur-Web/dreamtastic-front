@@ -12,8 +12,8 @@ export default function DreamCard({ dream }: DreamCardProps) {
   const { pathname } = useLocation();
 
   return (
-    <div className="w-full bg-gray-300 text-black rounded-lg">
-      <div className="border-b border-gray-500 px-6 py-2">
+    <div className="w-full bg-gray-100 text-black rounded-3xl">
+      <div className="border-b border-gray-300 px-6 py-2">
         <span className="text-xs">
           Par : {dream.author.username}{" "}
           <span className="tooltip">

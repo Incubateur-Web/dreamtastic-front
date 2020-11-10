@@ -35,17 +35,24 @@ export default function LoginPage() {
                     placeholder="Mot de passe"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-night rounded-full py-2 text-white font-bold focus:outline-none focus:shadow-outline"
-                >
-                  Se connecter
-                </button>
-
-                <div className="w-full">
-                  <Link to="/auth/forgot-password" className="float-right">
-                    Mot de passe oublié
-                  </Link>
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-night rounded-full py-2 text-white font-bold focus:outline-none focus:shadow-outline"
+                  >
+                    Se connecter
+                  </button>
+                  <div className="w-full flex flex-row-reverse justify-between px-1 text-blue-700 text-sm">
+                    <Link
+                      to="/auth/forgot-password"
+                      className="hover:underline"
+                    >
+                      Mot de passe oublié ?
+                    </Link>
+                    <Link to="/auth/signup" className="hover:underline">
+                      Créer un compte
+                    </Link>
+                  </div>
                 </div>
               </form>
             </div>

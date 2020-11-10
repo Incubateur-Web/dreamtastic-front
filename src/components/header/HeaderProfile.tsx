@@ -41,7 +41,7 @@ export default function HeaderProfile() {
               <img
                 alt="profileAvatar"
                 className="rounded-full m-auto"
-                src={process.env.PUBLIC_URL + "/logo512.png"}
+                src={process.env.PUBLIC_URL + "/images/avatar.png"}
               />
             </div>
             <div className="my-auto px-2">Jean Valjean</div>
