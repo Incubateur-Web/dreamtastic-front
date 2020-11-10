@@ -10,9 +10,11 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //TODO : fetch dreams
+    //TODO : fetch dreams use react query or
+    // create custom hooke to get loading state of this query
+    // to avoid double state on every components querying data from API
     const dreamList = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
       dreamList.push(generateDream());
     }
     setDreams(dreamList);
@@ -21,16 +23,31 @@ export default function HomePage() {
 
   return (
     <DefaultLayout>
-      <div className="space-y-4">
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            {dreams.map((dream, index) => {
-              return <DreamCard key={index} dream={dream} />;
-            })}
-          </>
-        )}
+      <img
+        src="https://s3-us-east-2.amazonaws.com/orbitz-media/blog/wp-content/uploads/2017/01/15174438/Yi-Peng-Festival-of-Lights.jpg"
+        alt=""
+        className="h-64 w-full bg-white rounded-3xl overflow-hidden object-cover object-center"
+      />
+      <div className="py-8 flex space-x-8">
+        <div className="space-y-4 w-3/4">
+          {loading ? (
+            <Loader />
+          ) : (
+            <>
+              {dreams.map((dream, index) => {
+                return <DreamCard key={index} dream={dream} />;
+              })}
+            </>
+          )}
+        </div>
+        <div className="w-1/4 text-gray-900">
+          <div className="bg-white rounded-3xl h-64 overflow-hidden ">
+            <div className="text-lg py-2 text-center bg-cover">
+              Widget title
+            </div>
+            <div>other links</div>
+          </div>
+        </div>
       </div>
     </DefaultLayout>
   );

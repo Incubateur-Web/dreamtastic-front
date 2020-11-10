@@ -39,7 +39,7 @@ export default function Header() {
   );
 
   return (
-    <div className="header-container block shadow-header md:flex px-4 text-lg bg-blue-800 sticky top-0">
+    <div className="header-container block md:flex px-4 text-lg sticky top-0">
       <div className="flex md:flex-row flex-col flex-1">
         <div className="text-2xl mx-2 my-auto flex justify-between">
           <div className="my-2">Dreamtastic</div>

@@ -6,10 +6,10 @@ module.exports = {
         "back-dark": "#111838",
       },
       backgroundColor: {
-        "blue-night": "#384c91",
+        "blue-night": "#2f4388",
       },
       textColor: {
-        "blue-night": "#384c91",
+        "blue-night": "#2f4388",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
