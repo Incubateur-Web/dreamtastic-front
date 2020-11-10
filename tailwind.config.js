@@ -8,6 +8,9 @@ module.exports = {
       backgroundColor: {
         "blue-night": "#384c91",
       },
+      textColor: {
+        "blue-night": "#384c91",
+      },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
       },
@@ -16,6 +19,9 @@ module.exports = {
         3: "3",
         4: "4",
         5: "5",
+      },
+      fontFamily: {
+        pacifico: ["Pacifico", "sans-serif"],
       },
     },
   },
