@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import HeaderProfileSubmenu from "./HeaderProfileSubmenu";
 import { useClickAway } from "react-use";
+import clsx from "clsx";
 
 export default function HeaderProfile() {
   const [isConnected, setIsConnected] = useState(false);
