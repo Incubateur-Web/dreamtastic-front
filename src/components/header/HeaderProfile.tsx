@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import HeaderProfileSubmenu from "./HeaderProfileSubmenu";
 import { useClickAway } from "react-use";
+import clsx from "clsx";
 
 export default function HeaderProfile() {
   const [isConnected, setIsConnected] = useState(false);
@@ -25,10 +26,10 @@ export default function HeaderProfile() {
 
   return (
     <div
-      className={
-        "mx-auto flex cursor-pointer transition duration-150 " +
-        (!isConnected && "my-auto")
-      }
+      className={clsx(
+        [!isConnected && "my-auto"],
+        "mx-auto flex cursor-pointer transition duration-150"
+      )}
     >
       {isConnected ? (
         <div

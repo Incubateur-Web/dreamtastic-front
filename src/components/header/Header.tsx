@@ -6,7 +6,7 @@ export default function Header() {
   //TODO : manage the page active state
   const [activeLink, setActiveLink] = useState(0);
   return (
-    <div className="header-container block md:flex px-4 text-lg sticky top-0">
+    <div className=" bg-blue-night header-container block md:flex px-4 text-lg sticky top-0">
       <div className="flex md:flex-row flex-col flex-1">
         <div className="text-3xl mx-2 my-auto font-pacifico">Dreamtastic</div>
         <div className="flex flex-col md:flex-row w-full text-center justify-between md:justify-start">
