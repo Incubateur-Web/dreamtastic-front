@@ -15,8 +15,7 @@ export default function DreamCard({ dream }: DreamCardProps) {
   const [reactionBarVisible, setReactionBarVisible] = useState(false);
   const reactionBarRef = useRef(null);
 
-  useClickAway(reactionBarRef, (e) => {
-    // e.stopPropagation();
+  useClickAway(reactionBarRef, () => {
     setReactionBarVisible(false);
   });
 
