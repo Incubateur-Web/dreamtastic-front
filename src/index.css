@@ -24,3 +24,11 @@
   border-style: solid;
   border-color: transparent #4a5568 transparent transparent;
 }
+
+.dream-card-button {
+  @apply text-secondary rounded px-3 py-2;
+}
+
+.dream-card-button:hover {
+  @apply bg-gray-200;
+}

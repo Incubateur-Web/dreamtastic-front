@@ -10,6 +10,7 @@ module.exports = {
       },
       textColor: {
         "blue-night": "#2f4388",
+        secondary: "#65676B",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
@@ -23,8 +24,19 @@ module.exports = {
       fontFamily: {
         pacifico: ["Pacifico", "sans-serif"],
       },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-5deg)" },
+          "50%": { transform: "rotate(5deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
+      },
     },
   },
-  variants: {},
+  variants: {
+    animation: ["responsive", "motion-safe", "motion-reduce", "hover"],
+  },
   plugins: [],
 };
