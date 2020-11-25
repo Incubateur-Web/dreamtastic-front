@@ -26,7 +26,7 @@ export default function HeaderProfile() {
   return (
     <div
       className={
-        "mx-auto flex cursor-pointer transition duration-150 " +
+        "mx-auto flex cursor-pointer transition duration-150 my-4 md:my-0 " +
         (!isConnected && "my-auto")
       }
     >
@@ -58,7 +58,7 @@ export default function HeaderProfile() {
         <>
           <div
             onClick={handleConnection}
-            className="active-bounce-button px-3 py-1 border rounded hover:bg-white transition duration-150 hover:text-blue-800"
+            className="active-bounce-button self-center px-3 py-1 border rounded hover:bg-white transition duration-150 hover:text-blue-800"
           >
             Connexion <FontAwesomeIcon icon={faSignInAlt} />
           </div>
