@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import HeaderProfileSubmenu from "./HeaderProfileSubmenu";
 import { useClickAway } from "react-use";
+import clsx from "clsx";
 
 export default function HeaderProfile() {
   const [isConnected, setIsConnected] = useState(false);
@@ -25,10 +26,10 @@ export default function HeaderProfile() {
 
   return (
     <div
-      className={
-        "mx-auto flex cursor-pointer transition duration-150 my-4 md:my-0 " +
-        (!isConnected && "my-auto")
-      }
+      className={clsx(
+        "mx-auto flex cursor-pointer transition duration-150 my-4 md:my-0 ",
+        [!isConnected && "my-auto"]
+      )}
     >
       {isConnected ? (
         <div
@@ -41,7 +42,7 @@ export default function HeaderProfile() {
               <img
                 alt="profileAvatar"
                 className="rounded-full m-auto"
-                src={process.env.PUBLIC_URL + "/logo512.png"}
+                src={process.env.PUBLIC_URL + "/images/avatar.png"}
               />
             </div>
             <div className="my-auto px-2">Jean Valjean</div>

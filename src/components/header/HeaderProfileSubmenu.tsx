@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
 
 type Props = {
   visible: boolean;
@@ -13,9 +14,10 @@ export default function HeaderProfileSubmenu({
 }: Props) {
   return (
     <div
-      className={
-        "absolute bg-gray-800 w-48 right-0 " + (visible ? "block" : "hidden")
-      }
+      className={clsx(
+        [visible ? "block" : "hidden"],
+        "absolute bg-gray-800 w-48 right-0 "
+      )}
     >
       <div className="profile-submenu-link px-5 w-full py-2 hover:bg-white transition duration-150 hover:text-gray-800">
         <FontAwesomeIcon className="mr-1" icon={faUser} /> Mon compte
