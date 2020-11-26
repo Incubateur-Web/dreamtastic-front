@@ -27,8 +27,8 @@ export default function HeaderProfile() {
   return (
     <div
       className={clsx(
-        "mx-auto flex cursor-pointer transition duration-150 my-4 md:my-0 ",
-        [!isConnected && "my-auto"]
+        [!isConnected && "my-auto"],
+        "mx-auto flex cursor-pointer transition duration-150 my-4 md:my-0"
       )}
     >
       {isConnected ? (

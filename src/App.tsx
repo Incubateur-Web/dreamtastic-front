@@ -4,7 +4,9 @@ import Loader from "./components/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DreamPage = lazy(() => import("./pages/DreamPage"));
-const SignInPage = lazy(() => import("./pages/SignInPage"));
+const AuthPage = lazy(() => import("./pages/AuthPage"));
+const SignInForm = lazy(() => import("./components/auth/SignInForm"));
+const SignUpForm = lazy(() => import("./components/auth/SignUpForm"));
 
 export default function App() {
   return (
@@ -13,7 +15,16 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/dream/:id" component={DreamPage} />
-          <Route exact path="/auth/signin" component={SignInPage} />
+          <Route exact path="/auth/signin">
+            <AuthPage>
+              <SignInForm />
+            </AuthPage>
+          </Route>
+          <Route exact path="/auth/signup">
+            <AuthPage>
+              <SignUpForm />
+            </AuthPage>
+          </Route>
         </Switch>
       </Suspense>
     </BrowserRouter>

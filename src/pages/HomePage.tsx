@@ -4,6 +4,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import { generateDream } from "../mocks/Dream";
 import { Dream } from "../types/API/DreamType";
 import Loader from "../components/Loader";
+import LeftMenuTemplate from "../layouts/LeftMenuTemplate";
 
 export default function HomePage() {
   const [dreams, setDreams] = useState<Array<Dream>>([]);
@@ -22,7 +23,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <DefaultLayout>
+    <LeftMenuTemplate>
       <img
         src="https://s3-us-east-2.amazonaws.com/orbitz-media/blog/wp-content/uploads/2017/01/15174438/Yi-Peng-Festival-of-Lights.jpg"
         alt=""
@@ -49,6 +50,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </DefaultLayout>
+    </LeftMenuTemplate>
   );
 }
