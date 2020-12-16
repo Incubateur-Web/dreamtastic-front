@@ -6,6 +6,7 @@ import { TopicWidget } from "../components/widgets/TopicWidget";
 import { useQuery } from "../hooks/useQuery";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
+import DreamCard from "../components/dreams/DreamCard";
 
 export default function HomePage() {
   const { data, loading, error } = useQuery(
@@ -37,8 +38,8 @@ export default function HomePage() {
           ) : (
             <>
               {data?.dreams.map((dream: Dream) => {
-                return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
-                // return <DreamCard key={index} dream={dream} />;
+                // return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
+                return <DreamCard key={dream.id} {...dream} />;
               })}
             </>
           )}
