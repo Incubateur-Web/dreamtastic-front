@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { useLocation, useRouteMatch } from "react-router";
-import { Dream } from "../types/API/DreamType";
-import { generateDream } from "../mocks/Dream";
+import { generateUser } from "../mocks/User";
+import { User } from "../types/API/UserType";
+import Loader from "../components/Loader";
 
 export default function ProfilePage() {
   const { params } = useRouteMatch<{ id: string }>();
   const { state } = useLocation();
-  const [dream, setDream] = useState<Dream | undefined>(state as Dream);
+  const [user, setUser] = useState<User | undefined>(state as User);
 
   useEffect(() => {
     //TODO: Fetch from api
-    if (!dream) {
-      setDream(generateDream());
+    if (!user) {
+      setUser(generateUser());
     }
-  }, [params, dream]);
+  }, [params, user]);
+
+  if (user === undefined) {
+    return (
+      <DefaultLayout>
+        <Loader />
+      </DefaultLayout>
+    );
+  }
 
   return (
     <DefaultLayout>
-      <div>Mon Profil</div>
+      <div>{user.username}</div>
     </DefaultLayout>
   );
 }

@@ -10,7 +10,7 @@ type Props = {
 export default function UserItem({ user, actions, processing }: Props) {
   return (
     <tr
-      className={`hover:bg-gray-200 bg-opacity-50 transition duration-150 ${
+      className={`hover:bg-gray-200 bg-opacity-50 border-t-1 border-gray-400 transition duration-150 ${
         processing ? "opacity-50" : ""
       }`}
     >

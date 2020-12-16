@@ -7,6 +7,7 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { generateUser } from "../../mocks/User";
 
 type Props = {
   visible: boolean;
@@ -24,7 +25,7 @@ export default function HeaderProfileSubmenu({
       }
     >
       <Link
-        to="/profile"
+        to={{ pathname: `/profile/1564465`, state: generateUser() }}
         className="profile-submenu-link px-5 w-full py-2 block hover:bg-white transition duration-150 hover:text-gray-800"
       >
         <FontAwesomeIcon className="mr-1" icon={faUser} /> Mon compte
