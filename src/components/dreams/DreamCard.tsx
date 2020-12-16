@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Dream } from "../types/API/DreamType";
+import { Dream } from "../../types/API/DreamType";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Link, useLocation } from "react-router-dom";
-import ReactionBar from "./reaction/ReactionBar";
+import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
 
 type DreamCardProps = {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useRouteMatch } from "react-router";
 import CommentCard from "../components/CommentCard";
-import DreamCard from "../components/DreamCard";
+import DreamCard from "../components/dreams/DreamCard";
 import DreamCardSkeleton from "../components/skeleton/DreamCardSkeleton";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { generateDream } from "../mocks/Dream";

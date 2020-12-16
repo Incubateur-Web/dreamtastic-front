@@ -35,6 +35,7 @@ export function TopicWidget() {
         {data.topics.map((topic: Topic) => {
           return (
             <div
+              key={topic.id}
               style={{ color: topic.color }}
               className="text-xl font-semibold"
             >
