@@ -6,11 +6,9 @@ import { Link, useLocation } from "react-router-dom";
 import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
 
-type DreamCardProps = {
-  dream: Dream;
-};
+type DreamCardProps = Dream;
 
-export default function DreamCard({ dream }: DreamCardProps) {
+export default function DreamCard(dream: DreamCardProps) {
   const { pathname } = useLocation();
   const [reactionBarVisible, setReactionBarVisible] = useState(false);
   const reactionBarRef = useRef(null);
