@@ -62,8 +62,8 @@ export default function DreamList() {
         <thead>
           <tr className="text-left">
             <th className="pl-2">ID</th>
-            <th>Author</th>
-            <th>Created at</th>
+            <th>Auteur</th>
+            <th>Créé le</th>
             <th />
           </tr>
         </thead>

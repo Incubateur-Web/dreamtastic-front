@@ -73,8 +73,8 @@ export default function UserList() {
         <thead>
           <tr className="text-left">
             <th className="pl-2">ID</th>
-            <th>Username</th>
-            <th>Last connection</th>
+            <th>Nom d'utilisateur</th>
+            <th>Dernière connexion</th>
             <th />
           </tr>
         </thead>
