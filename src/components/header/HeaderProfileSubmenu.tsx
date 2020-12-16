@@ -24,7 +24,7 @@ export default function HeaderProfileSubmenu({
       }
     >
       <Link
-        to="/"
+        to="/profile"
         className="profile-submenu-link px-5 w-full py-2 block hover:bg-white transition duration-150 hover:text-gray-800"
       >
         <FontAwesomeIcon className="mr-1" icon={faUser} /> Mon compte

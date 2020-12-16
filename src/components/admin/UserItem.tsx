@@ -17,7 +17,7 @@ export default function UserItem({ user, actions, processing }: Props) {
       <td className="py-2 pl-2">{user.id}</td>
       <td className="py-2">{user.username}</td>
       <td className="py-2">{user.lastConnection.toDateString()}</td>
-      <td className="py-2">{actions}</td>
+      <td className="py-2 pr-2">{actions}</td>
     </tr>
   );
 }

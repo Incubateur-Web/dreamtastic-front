@@ -3,48 +3,13 @@ import { User } from "../../types/API/UserType";
 import UserItem from "./UserItem";
 import { faSpinner, faTimes, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { generateUser } from "../../mocks/User";
 
 const fakeUsers: Array<User> = [
-  {
-    username: "johndoe1",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    id: "x456gfdrgg4gfds",
-    description:
-      "the john doe number 1 but with a pretty long description because i need to have a long description and that's it",
-    lastConnection: new Date(),
-    dreams: [],
-  },
-  {
-    username: "johndoe2",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    id: "x456gfdrgg4gfdf",
-    description:
-      "the john doe number 2 but with a pretty long description because i need to have a long description and that's it",
-    lastConnection: new Date(),
-    dreams: [],
-  },
-  {
-    username: "johndoe3",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    id: "x456gfdrgg4gfde",
-    description:
-      "the john doe number 3 but with a pretty long description because i need to have a long description and that's it",
-    lastConnection: new Date(),
-    dreams: [],
-  },
-  {
-    username: "johndoe4",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    id: "x456gfdrgg4gfda",
-    description:
-      "the john doe number 4 but with a pretty long description because i need to have a long description and that's it",
-    lastConnection: new Date(),
-    dreams: [],
-  },
+  generateUser(),
+  generateUser(),
+  generateUser(),
+  generateUser(),
 ];
 
 export default function UserList() {
@@ -65,7 +30,7 @@ export default function UserList() {
 
   return (
     <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-300 rounded text-black">
-      <div className="mb-2">
+      <div className="mb-2 text-lg">
         <FontAwesomeIcon className="mr-2" icon={faUsers} />
         Utilisateurs
       </div>

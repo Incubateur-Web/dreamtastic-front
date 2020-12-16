@@ -17,7 +17,7 @@ export default function DreamItem({ dream, actions, processing }: Props) {
       <td className="py-2 pl-2">{dream.id}</td>
       <td className="py-2">{dream.author.username}</td>
       <td className="py-2">{dream.createdAt.toDateString()}</td>
-      <td className="py-2">{actions}</td>
+      <td className="py-2 pr-2">{actions}</td>
     </tr>
   );
 }

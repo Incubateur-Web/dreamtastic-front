@@ -3,37 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud, faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Dream } from "../../types/API/DreamType";
 import DreamItem from "./DreamItem";
+import { generateDream } from "../../mocks/Dream";
 
 const fakeDreams: Array<Dream> = [
-  {
-    id: "fdsgdf45g6d",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    author: {
-      username: "johndoe1",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      id: "x456gfdrgg4gfds",
-      description:
-        "the john doe number 1 but with a pretty long description because i need to have a long description and that's it",
-      lastConnection: new Date(),
-      dreams: [],
-    },
-    isAnonymous: false,
-    isPublished: true,
-    content:
-      "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-    topic: {
-      name: "ouais re",
-      color: "green",
-    },
-    type: {
-      name: "Rêve",
-      color: "red",
-    },
-    title: "Un titre d'article 1",
-    comments: [],
-  },
+  generateDream(),
+  generateDream(),
+  generateDream(),
 ];
 
 export default function DreamList() {
@@ -54,7 +29,7 @@ export default function DreamList() {
 
   return (
     <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-300 rounded text-black">
-      <div className="mb-2">
+      <div className="mb-2 text-lg">
         <FontAwesomeIcon className="mr-2" icon={faCloud} />
         Dreams
       </div>
