@@ -31,10 +31,18 @@ export function TopicWidget() {
 
   return (
     <WidgetContainer title="Topics" width="w-1/4">
-      {/* {JSON.stringify(data.topics)} */}
-      {data.topics.map((topic: Topic) => {
-        return <div style={{ color: topic.color }}>{topic.name}</div>;
-      })}
+      <div className="px-4">
+        {data.topics.map((topic: Topic) => {
+          return (
+            <div
+              style={{ color: topic.color }}
+              className="text-xl font-semibold"
+            >
+              {topic.name}
+            </div>
+          );
+        })}
+      </div>
     </WidgetContainer>
   );
 }

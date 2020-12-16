@@ -7,6 +7,7 @@ export const useQuery = (url: string, method: Function, opts?: Options) => {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     let promise = null;
     if (opts?.data) promise = method.call(this, url, opts.data, opts.options);

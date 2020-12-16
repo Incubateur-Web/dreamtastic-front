@@ -5,22 +5,12 @@ import { generateDream } from "../mocks/Dream";
 import { Dream } from "../types/API/DreamType";
 import Loader from "../components/Loader";
 import { TopicWidget } from "../components/widgets/TopicWidget";
+import { useQuery } from "../hooks/useQuery";
+import Axios from "axios";
 
 export default function HomePage() {
-  const [dreams, setDreams] = useState<Array<Dream>>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    //TODO : fetch dreams use react query or
-    // create custom hooke to get loading state of this query
-    // to avoid double state on every components querying data from API
-    const dreamList = [];
-    for (let i = 0; i < 10; i++) {
-      dreamList.push(generateDream());
-    }
-    setDreams(dreamList);
-    setLoading(false);
-  }, []);
+  const { data, loading } = useQuery("http://localhost/dreams", Axios.get);
+  console.log(data);
 
   return (
     <DefaultLayout>
@@ -35,8 +25,9 @@ export default function HomePage() {
             <Loader />
           ) : (
             <>
-              {dreams.map((dream, index) => {
-                return <DreamCard key={index} dream={dream} />;
+              {data?.dreams.map((dream: Dream, index: number) => {
+                return <div>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
+                // return <DreamCard key={index} dream={dream} />;
               })}
             </>
           )}
