@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { useLocation, useRouteMatch } from "react-router";
+import { Link } from "react-router-dom";
 import { generateUser } from "../mocks/User";
 import { User } from "../types/API/UserType";
 import Loader from "../components/Loader";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UserProfile from "../components/user/UserProfile";
+import EditUser from "../components/user/EditUser";
 
-export default function ProfilePage() {
+type Props = {
+  editing?: boolean;
+};
+
+export default function ProfilePage({ editing }: Props) {
   const { params } = useRouteMatch<{ id: string }>();
   const { state } = useLocation();
   const [user, setUser] = useState<User | undefined>(state as User);
@@ -33,34 +40,18 @@ export default function ProfilePage() {
       <div className="bg-gray-300 rounded text-black w-full py-4 px-8">
         <div className="text-2xl w-full border-b-1 border-gray-400 pb-2">
           {user.firstName} {user.lastName}
-          <FontAwesomeIcon className="ml-2 cursor-pointer" icon={faUserEdit} />
+          {editing ? (
+            ""
+          ) : (
+            <Link to={{ pathname: `/profile/1564465/edit`, state: user }}>
+              <FontAwesomeIcon
+                className="ml-2 cursor-pointer"
+                icon={faUserEdit}
+              />
+            </Link>
+          )}
         </div>
-        <table className="mt-4 text-left">
-          <tr>
-            <th className="py-2">Création</th>
-            <td className="px-4">{user.createdAt.toDateString()}</td>
-          </tr>
-          <tr>
-            <th className="py-2">Dernière modifications</th>
-            <td className="px-4">{user.updatedAt.toDateString()}</td>
-          </tr>
-          <tr>
-            <th className="py-2">Dernière connexion</th>
-            <td className="px-4">{user.lastConnection.toDateString()}</td>
-          </tr>
-          <tr>
-            <th className="py-2">Nom d'utilisateur</th>
-            <td className="px-4">{user.username}</td>
-          </tr>
-          <tr>
-            <th className="py-2">Description</th>
-            <td className="px-4 text-justify">{user.description}</td>
-          </tr>
-          <tr>
-            <th className="py-2">Nombre de parutions</th>
-            <td className="px-4">{user.dreams.length}</td>
-          </tr>
-        </table>
+        {editing ? <EditUser user={user} /> : <UserProfile user={user} />}
       </div>
     </DefaultLayout>
   );
