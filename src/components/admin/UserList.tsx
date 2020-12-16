@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { User } from "../../types/API/UserType";
 import UserItem from "./UserItem";
-import { faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faTimes, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const fakeUsers: Array<User> = [
@@ -65,7 +65,10 @@ export default function UserList() {
 
   return (
     <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-300 rounded text-black">
-      <div className="mb-2">Utilisateurs</div>
+      <div className="mb-2">
+        <FontAwesomeIcon className="mr-2" icon={faUsers} />
+        Utilisateurs
+      </div>
       <table className="w-full">
         <thead>
           <tr className="text-left">
@@ -106,6 +109,9 @@ export default function UserList() {
           })}
         </tbody>
       </table>
+      {userList.length === 0 && (
+        <div className="text-center w-full">No users</div>
+      )}
     </div>
   );
 }
