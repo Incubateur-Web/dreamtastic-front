@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loader from "./components/Loader";
 import NotFoundPage from "./pages/error/NotFoundPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const DreamPage = lazy(() => import("./pages/DreamPage"));
@@ -33,6 +34,7 @@ export default function App() {
               <SignUpForm />
             </AuthPage>
           </Route>
+          <Route exact path="/error" component={ErrorPage} />
           <Route path="*">
             <NotFoundPage />
           </Route>

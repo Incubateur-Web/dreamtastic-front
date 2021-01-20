@@ -1,10 +1,11 @@
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useRouteMatch } from "react-router";
-import CommentCard from "../components/CommentCard";
-import DreamCard from "../components/DreamCard";
+import { Redirect, useLocation, useRouteMatch } from "react-router";
+import CommentList from "../components/dreams/comments/CommentList";
+import DreamCard from "../components/dreams/DreamCard";
 import DreamCardSkeleton from "../components/skeleton/DreamCardSkeleton";
+import { useQueryLazy } from "../hooks/useQueryLazy";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { generateDream } from "../mocks/Dream";
 import { Dream } from "../types/API/DreamType";
 
 /**
@@ -14,13 +15,25 @@ export default function DreamPage() {
   const { params } = useRouteMatch<{ id: string }>();
   const { state } = useLocation();
   const [dream, setDream] = useState<Dream | undefined>(state as Dream);
+  const { query, data, error } = useQueryLazy(
+    `/dreams/${params.id}`,
+    Axios.get
+  );
 
   useEffect(() => {
-    //TODO: Fetch from api
     if (!dream) {
-      setDream(generateDream());
+      query();
     }
-  }, [params, dream]);
+  }, [dream, query]);
+
+  useEffect(() => {
+    !dream && setDream(data?.dream as Dream);
+  }, [dream, data]);
+
+  if (error)
+    return (
+      <Redirect to={{ pathname: "/error", state: { code: 500, error } }} />
+    );
 
   if (!dream) {
     return (
@@ -29,14 +42,13 @@ export default function DreamPage() {
       </DefaultLayout>
     );
   }
+
   return (
     <DefaultLayout>
       <div className="space-y-6">
-        <DreamCard dream={dream} />
+        <DreamCard {...dream} />
         <div className="text-black bg-gray-200 rounded-lg divide-y-2 divide-gray-400">
-          {dream.comments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} />
-          ))}
+          <CommentList dreamId={params.id} />
         </div>
       </div>
     </DefaultLayout>

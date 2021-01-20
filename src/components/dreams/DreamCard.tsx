@@ -1,16 +1,14 @@
 import React, { useRef, useState } from "react";
-import { Dream } from "../types/API/DreamType";
+import { Dream } from "../../types/API/DreamType";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Link, useLocation } from "react-router-dom";
-import ReactionBar from "./reaction/ReactionBar";
+import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
 
-type DreamCardProps = {
-  dream: Dream;
-};
+type DreamCardProps = Dream;
 
-export default function DreamCard({ dream }: DreamCardProps) {
+export default function DreamCard(dream: DreamCardProps) {
   const { pathname } = useLocation();
   const [reactionBarVisible, setReactionBarVisible] = useState(false);
   const reactionBarRef = useRef(null);
@@ -23,9 +21,10 @@ export default function DreamCard({ dream }: DreamCardProps) {
     <div className="w-full bg-gray-100 text-black rounded-xl">
       <div className="border-b border-gray-300 px-6 py-2">
         <span className="text-xs">
-          Par : {dream.author.username}{" "}
+          {/* Par : {dream.author.username}{" "} */}
           <span className="tooltip">
-            il y a {formatDistanceToNow(dream.updatedAt, { locale: fr })}
+            il y a{" "}
+            {formatDistanceToNow(new Date(dream.updatedAt), { locale: fr })}
             <span className="tooltip-text text-xs">
               {dream.updatedAt.toLocaleString()}
             </span>
@@ -59,12 +58,6 @@ export default function DreamCard({ dream }: DreamCardProps) {
         >
           <span role="img" aria-label="J'aime">
             👍 J'aime
-          </span>
-        </div>
-        <div className="flex my-auto dream-card-button" role="button">
-          <span className="my-auto">
-            {dream.comments.length > 1 && <>{dream.comments.length} Comments</>}
-            {dream.comments.length <= 1 && <>{dream.comments.length} Comment</>}
           </span>
         </div>
       </div>

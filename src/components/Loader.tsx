@@ -1,11 +1,27 @@
-import React from "react";
+import clsx from "clsx";
+import React, { CSSProperties } from "react";
 
-export default function Loader({ size }: { size?: number }) {
+type Props = { size?: number; color?: string };
+
+export default function Loader({ size, color }: Props) {
+  const style: CSSProperties = {};
+  if (size) {
+    style.width = size + "px";
+    style.height = size + "px";
+  }
+  if (color) {
+    style.borderTopColor = color;
+    style.borderBottomColor = color;
+  }
+
   return (
     <div className="w-full flex h-full">
       <div
-        className="animate-spin m-auto loader rounded-full w-16 h-16"
-        style={size ? { width: size + "px" } : {}}
+        className={clsx(
+          color,
+          "animate-spin m-auto loader rounded-full w-16 h-16"
+        )}
+        style={style}
       />
     </div>
   );

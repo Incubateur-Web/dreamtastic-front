@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
-import DreamCard from "../components/DreamCard";
+import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { generateDream } from "../mocks/Dream";
 import { Dream } from "../types/API/DreamType";
 import Loader from "../components/Loader";
-import LeftMenuTemplate from "../layouts/LeftMenuTemplate";
+import { TopicWidget } from "../components/widgets/TopicWidget";
+import { useQuery } from "../hooks/useQuery";
+import Axios from "axios";
+import { Redirect } from "react-router-dom";
+import DreamCard from "../components/dreams/DreamCard";
 
 export default function HomePage() {
-  const [dreams, setDreams] = useState<Array<Dream>>([]);
-  const [loading, setLoading] = useState(true);
+  const { data, loading, error } = useQuery("/dreams", Axios.get);
 
-  useEffect(() => {
-    //TODO : fetch dreams use react query or
-    // create custom hooke to get loading state of this query
-    // to avoid double state on every components querying data from API
-    const dreamList = [];
-    for (let i = 0; i < 10; i++) {
-      dreamList.push(generateDream());
-    }
-    setDreams(dreamList);
-    setLoading(false);
-  }, []);
+  if (error)
+    return (
+      <Redirect
+        to={{
+          pathname: "/error",
+          state: { code: 500, error: { message: "Failed to fetch dreams" } },
+        }}
+      />
+    );
 
   return (
-    <LeftMenuTemplate>
+    <DefaultLayout>
       <img
         src="https://s3-us-east-2.amazonaws.com/orbitz-media/blog/wp-content/uploads/2017/01/15174438/Yi-Peng-Festival-of-Lights.jpg"
         alt=""
@@ -35,21 +34,15 @@ export default function HomePage() {
             <Loader />
           ) : (
             <>
-              {dreams.map((dream, index) => {
-                return <DreamCard key={index} dream={dream} />;
+              {data?.dreams.map((dream: Dream) => {
+                // return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
+                return <DreamCard key={dream.id} {...dream} />;
               })}
             </>
           )}
         </div>
-        <div className="w-1/4 text-gray-900">
-          <div className="bg-white rounded-3xl h-64 overflow-hidden ">
-            <div className="text-lg py-2 text-center bg-cover">
-              Widget title
-            </div>
-            <div>other links</div>
-          </div>
-        </div>
+        <TopicWidget />
       </div>
-    </LeftMenuTemplate>
+    </DefaultLayout>
   );
 }

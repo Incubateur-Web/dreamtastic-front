@@ -14,7 +14,13 @@ export const generateDream = (): Dream => ({
   isAnonymous: true,
   isPublished: true,
   title: random.words(4),
-  topic: { color: "", name: "" },
+  topic: {
+    color: "",
+    name: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    id: random.uuid(),
+  },
   type: { color: "", name: "" },
 });
 
