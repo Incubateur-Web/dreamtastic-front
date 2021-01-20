@@ -7,6 +7,9 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const DreamPage = lazy(() => import("./pages/DreamPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const AuthPage = lazy(() => import("./pages/AuthPage"));
+const SignInForm = lazy(() => import("./components/auth/SignInForm"));
+const SignUpForm = lazy(() => import("./components/auth/SignUpForm"));
 
 export default function App() {
   return (
@@ -22,6 +25,16 @@ export default function App() {
           </Route>
           <Route path="*">
             <NotFoundPage />
+          </Route>
+          <Route exact path="/auth/signin">
+            <AuthPage>
+              <SignInForm />
+            </AuthPage>
+          </Route>
+          <Route exact path="/auth/signup">
+            <AuthPage>
+              <SignUpForm />
+            </AuthPage>
           </Route>
         </Switch>
       </Suspense>

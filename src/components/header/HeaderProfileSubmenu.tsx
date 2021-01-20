@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { generateUser } from "../../mocks/User";
+import clsx from "clsx";
 
 type Props = {
   visible: boolean;
@@ -20,9 +21,10 @@ export default function HeaderProfileSubmenu({
 }: Props) {
   return (
     <div
-      className={
-        "absolute bg-gray-800 w-48 right-0 " + (visible ? "block" : "hidden")
-      }
+      className={clsx(
+        [visible ? "block" : "hidden"],
+        "absolute bg-gray-800 w-48 right-0 "
+      )}
     >
       <Link
         to={{ pathname: `/profile/1564465`, state: generateUser() }}
