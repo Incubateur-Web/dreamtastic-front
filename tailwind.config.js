@@ -1,9 +1,6 @@
 module.exports = {
   theme: {
     extend: {
-      borderWidth: {
-        1: "1px",
-      },
       gradientColorStops: {
         "back-light": "#27427b",
         "back-dark": "#111838",
