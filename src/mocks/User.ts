@@ -3,6 +3,8 @@ import { random, date } from "faker";
 
 export const generateUser = (): User => ({
   id: random.uuid(),
+  lastName: random.word(),
+  firstName: random.word(),
   createdAt: date.past(),
   updatedAt: date.past(),
   description: random.words(200),
