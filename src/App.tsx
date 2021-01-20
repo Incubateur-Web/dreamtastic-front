@@ -23,9 +23,6 @@ export default function App() {
           <Route exact path="/profile/:id/edit">
             <ProfilePage editing />
           </Route>
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
           <Route exact path="/auth/signin">
             <AuthPage>
               <SignInForm />
@@ -35,6 +32,9 @@ export default function App() {
             <AuthPage>
               <SignUpForm />
             </AuthPage>
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
           </Route>
         </Switch>
       </Suspense>
