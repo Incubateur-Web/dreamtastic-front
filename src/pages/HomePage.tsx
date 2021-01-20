@@ -9,10 +9,7 @@ import { Redirect } from "react-router-dom";
 import DreamCard from "../components/dreams/DreamCard";
 
 export default function HomePage() {
-  const { data, loading, error } = useQuery(
-    "http://localhost/dreams",
-    Axios.get
-  );
+  const { data, loading, error } = useQuery("/dreams", Axios.get);
 
   if (error)
     return (

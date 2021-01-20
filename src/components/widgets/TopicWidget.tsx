@@ -6,10 +6,7 @@ import Loader from "../Loader";
 import WidgetContainer from "./WidgetContainer";
 
 export function TopicWidget() {
-  const { data, error, loading } = useQuery(
-    "http://localhost/topics",
-    Axios.get
-  );
+  const { data, error, loading } = useQuery("/topics", Axios.get);
 
   if (error)
     return (

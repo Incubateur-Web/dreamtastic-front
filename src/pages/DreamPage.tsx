@@ -16,7 +16,7 @@ export default function DreamPage() {
   const { state } = useLocation();
   const [dream, setDream] = useState<Dream | undefined>(state as Dream);
   const { query, data, error } = useQueryLazy(
-    "http://localhost/dreams/".concat(params.id),
+    `http://localhost/dreams/${params.id}`,
     Axios.get
   );
 
