@@ -11,8 +11,6 @@ import DreamCard from "../components/dreams/DreamCard";
 export default function HomePage() {
   const { data, loading, error } = useQuery("/dreams", Axios.get);
 
-  console.log(error);
-
   if (error)
     return (
       <Redirect
