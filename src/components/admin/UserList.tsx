@@ -29,7 +29,7 @@ export default function UserList() {
   };
 
   return (
-    <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-300 rounded text-black">
+    <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-100 rounded text-black">
       <div className="mb-2 text-lg">
         <FontAwesomeIcon className="mr-2" icon={faUsers} />
         Utilisateurs
