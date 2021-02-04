@@ -40,10 +40,10 @@ export default function Header() {
   );
 
   return (
-    <div className=" bg-blue-night header-container block md:flex px-4 text-lg sticky top-0 z-50">
+    <div className=" bg-blue-500 header-container block md:flex px-4 text-lg sticky top-0 z-50">
       <div className="flex md:flex-row flex-col flex-1">
         <div className="text-2xl mx-2 my-auto flex justify-between">
-          <div className="my-2 font-pacifico">
+          <div className="my-2 font-pacifico mr-4">
             <Link to="/">Dreamtastic</Link>
           </div>
           <div className="flex md:hidden mx-2 px-2 flex-initial">
