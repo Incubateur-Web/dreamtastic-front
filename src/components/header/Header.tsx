@@ -40,7 +40,7 @@ export default function Header() {
   );
 
   return (
-    <div className="bg-blue-500 header-container block md:flex px-4 text-lg sticky top-0 z-50 shadow-lg">
+    <div className="bg-blue-night-light header-container block md:flex px-4 text-lg sticky top-0 z-50 shadow-lg">
       <div className="flex md:flex-row flex-col flex-1">
         <div className="text-2xl mx-2 my-auto flex justify-between">
           <div className="my-2 font-pacifico mr-4">
