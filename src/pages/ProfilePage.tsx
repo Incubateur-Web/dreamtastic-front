@@ -37,7 +37,7 @@ export default function ProfilePage({ editing }: Props) {
 
   return (
     <DefaultLayout>
-      <div className="bg-gray-300 rounded text-black w-full py-4 px-8">
+      <div className="bg-gray-100 rounded text-black w-full py-4 px-8">
         <div className="text-2xl w-full border-b-1 border-gray-400 pb-2">
           {user.firstName} {user.lastName}
           {editing ? (
