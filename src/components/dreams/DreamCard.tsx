@@ -5,6 +5,7 @@ import { fr } from "date-fns/locale";
 import { Link, useLocation } from "react-router-dom";
 import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
+import { MySwal } from "../swal/MySwal";
 
 type DreamCardProps = Dream;
 
@@ -16,6 +17,47 @@ export default function DreamCard(dream: DreamCardProps) {
   useClickAway(reactionBarRef, () => {
     setReactionBarVisible(false);
   });
+
+  const handleReportClick = () => {
+    const validationMessage = "Veuillez remplir ce champ";
+    MySwal.fire({
+      title: "Signaler un rêve",
+      input: "text",
+      inputAttributes: {
+        required: true,
+      },
+      validationMessage: validationMessage,
+      showCancelButton: true,
+      confirmButtonText: "Signaler",
+      showLoaderOnConfirm: true,
+      preConfirm: (reason: string) => {
+        if (!reason) {
+          MySwal.showValidationMessage(validationMessage);
+        } else {
+          //TODO : fetch API
+          console.log(`reporting dream ${dream.id} for ${reason}`);
+          return true;
+        }
+      },
+      allowOutsideClick: () => !MySwal.isLoading(),
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          console.log(`dream ${dream.id} reported !`);
+          MySwal.fire({
+            title: "Signalement effectué",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        MySwal.fire({
+          title: "Une erreur est survenue",
+          text: error.message,
+          icon: "error",
+        });
+      });
+  };
 
   return (
     <div className="w-full bg-gray-100 text-black rounded-xl">
@@ -45,20 +87,25 @@ export default function DreamCard(dream: DreamCardProps) {
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
       {/* Reactions */}
-      <div
-        className="flex px-6 pb-3 space-x-4 leading-none select-none"
-        role="button"
-      >
+      <div className="flex px-6 pb-3">
+        <div className="flex space-x-4 leading-none select-none" role="button">
+          <div
+            className="flex my-auto dream-card-button"
+            onMouseDown={(e) => {
+              e.stopPropagation();
+              setReactionBarVisible((visible) => !visible);
+            }}
+          >
+            <span role="img" aria-label="J'aime">
+              👍 J'aime
+            </span>
+          </div>
+        </div>
         <div
-          className="flex my-auto dream-card-button"
-          onMouseDown={(e) => {
-            e.stopPropagation();
-            setReactionBarVisible((visible) => !visible);
-          }}
+          onClick={handleReportClick}
+          className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
         >
-          <span role="img" aria-label="J'aime">
-            👍 J'aime
-          </span>
+          Signaler
         </div>
       </div>
     </div>

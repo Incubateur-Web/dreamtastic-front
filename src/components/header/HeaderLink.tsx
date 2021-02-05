@@ -13,11 +13,11 @@ export default function HeaderLink({ path, text, active, onClick }: Props) {
   return (
     <Link
       className={clsx(
-        "my-auto w-full md:w-40 p-4 transition duration-150 hover:bg-blue-900 border-b-2 header-link",
+        "my-auto w-full md:w-40 p-4 transition duration-150 hover:bg-blue-night border-b-2 header-link",
         [
           active
             ? "border-white hover:border-white"
-            : "border-blue-800 hover:border-blue-900",
+            : "border-blue-night hover:border-blue-night",
         ]
       )}
       to={path}

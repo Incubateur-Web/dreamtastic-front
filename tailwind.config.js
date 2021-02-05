@@ -6,7 +6,8 @@ module.exports = {
         "back-dark": "#111838",
       },
       backgroundColor: {
-        "blue-night": "#2f4388",
+        "blue-night": "#2A4A89",
+        "blue-night-light": "#3464C0",
       },
       textColor: {
         "blue-night": "#2f4388",
