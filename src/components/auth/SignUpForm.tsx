@@ -56,7 +56,7 @@ export default function SignUpForm() {
           type="email"
           id="email"
           name="email"
-          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Email"
           autoFocus
           ref={register}
@@ -73,7 +73,7 @@ export default function SignUpForm() {
           type="text"
           id="name"
           name="name"
-          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Nom"
           ref={register}
         />
@@ -89,7 +89,7 @@ export default function SignUpForm() {
           type="password"
           id="password"
           name="password"
-          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Mot de passe"
           ref={register}
         />
@@ -107,7 +107,7 @@ export default function SignUpForm() {
           type="password"
           id="repeat_password"
           name="repeat_password"
-          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Mot de passe"
           ref={register}
         />
@@ -117,7 +117,7 @@ export default function SignUpForm() {
           </span>
         )}
       </div>
-      <div>
+      <div className="pt-8">
         <button
           type="submit"
           disabled={!formState.isValid}
@@ -132,7 +132,7 @@ export default function SignUpForm() {
         <div className="w-full mt-2 flex flex-row-reverse justify-between px-1 text-sm">
           <div>
             Déjà enregistré ?{" "}
-            <Link to="/auth/signin" className="text-white underline">
+            <Link to="/auth/signin" className="text-white hover:underline">
               Se connecter
             </Link>
           </div>
