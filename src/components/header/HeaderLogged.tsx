@@ -2,7 +2,6 @@ import {
   faCaretDown,
   faCog,
   faSignOutAlt,
-  faUser,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,12 +25,14 @@ export const HeaderLogged = () => {
   return (
     <>
       <div className="flex cursor-pointer">
-        <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-2 pr-4 space-x-3">
-          <div className="w-8 h-8 rounded-full bg-white bg-opacity-40" />
-          <div className="my-auto">
-            <span>{user.username}</span>
+        <Link to="/profile/1234567">
+          <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-2 pr-4 space-x-3">
+            <div className="w-8 h-8 rounded-full bg-white bg-opacity-40" />
+            <div className="my-auto">
+              <span>{user.username}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div ref={ref} className="relative">
         <button
@@ -60,11 +61,6 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
         "absolute top-12 right-0 bg-gray-700 w-60 rounded-lg p-2"
       )}
     >
-      <DropDownItem
-        link="/profile/1234567"
-        label="Compte"
-        icon={<FontAwesomeIcon icon={faUser} />}
-      />
       <DropDownItem
         link="/admin"
         label="Administration"
