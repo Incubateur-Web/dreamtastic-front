@@ -45,20 +45,22 @@ export default function DreamCard(dream: DreamCardProps) {
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
       {/* Reactions */}
-      <div
-        className="flex px-6 pb-3 space-x-4 leading-none select-none"
-        role="button"
-      >
-        <div
-          className="flex my-auto dream-card-button"
-          onMouseDown={(e) => {
-            e.stopPropagation();
-            setReactionBarVisible((visible) => !visible);
-          }}
-        >
-          <span role="img" aria-label="J'aime">
-            👍 J'aime
-          </span>
+      <div className="flex px-6 pb-3">
+        <div className="flex space-x-4 leading-none select-none" role="button">
+          <div
+            className="flex my-auto dream-card-button"
+            onMouseDown={(e) => {
+              e.stopPropagation();
+              setReactionBarVisible((visible) => !visible);
+            }}
+          >
+            <span role="img" aria-label="J'aime">
+              👍 J'aime
+            </span>
+          </div>
+        </div>
+        <div className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+          Signaler
         </div>
       </div>
     </div>
