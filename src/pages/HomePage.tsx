@@ -24,19 +24,19 @@ export default function HomePage() {
   return (
     <DefaultLayout>
       <div className="py-5 flex space-x-5">
-        <div className="space-y-4 w-3/4">
+        <div className="space-y-4 w-full flex">
+          <TopicWidget />
           {loading ? (
             <Loader />
           ) : (
-            <>
+            <div className="flex flex-col w-2/4 px-4 my-0">
               {data?.dreams.map((dream: Dream) => {
                 // return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
                 return <DreamCard key={dream.id} {...dream} />;
               })}
-            </>
+            </div>
           )}
         </div>
-        <TopicWidget />
       </div>
     </DefaultLayout>
   );

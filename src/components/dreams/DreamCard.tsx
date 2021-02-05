@@ -60,7 +60,7 @@ export default function DreamCard(dream: DreamCardProps) {
   };
 
   return (
-    <div className="w-full bg-gray-100 text-black rounded-xl">
+    <div className="w-full bg-white text-white bg-opacity-25 text-black rounded-xl mb-8">
       <div className="border-b border-gray-300 px-6 py-2">
         <span className="text-xs">
           {/* Par : {dream.author.username}{" "} */}

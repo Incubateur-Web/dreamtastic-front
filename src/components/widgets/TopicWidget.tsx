@@ -10,14 +10,14 @@ export function TopicWidget() {
 
   if (error)
     return (
-      <WidgetContainer title="Topics" width="w-1/4">
+      <WidgetContainer title="Topics" width="w-1/4 px-4">
         <div className="text-red-500">Error fetching topics</div>
       </WidgetContainer>
     );
 
   if (data === null)
     return (
-      <WidgetContainer title="Topics" width="w-1/4">
+      <WidgetContainer title="Topics" width="w-1/4 px-4">
         {loading ? (
           <Loader color="gray" />
         ) : (
@@ -27,7 +27,7 @@ export function TopicWidget() {
     );
 
   return (
-    <WidgetContainer title="Topics" width="w-1/4">
+    <WidgetContainer title="Topics" width="w-1/4 px-4">
       <div className="px-4">
         {data.topics.map((topic: Topic) => {
           return (

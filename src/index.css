@@ -35,12 +35,12 @@
 }
 
 .dream-card-button {
-  @apply text-secondary;
   @apply rounded;
   @apply px-3;
   @apply py-2;
 }
 
 .dream-card-button:hover {
-  @apply bg-gray-200;
+  @apply bg-gray-100;
+  @apply bg-opacity-50;
 }
