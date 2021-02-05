@@ -1,14 +1,10 @@
-import React, { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren } from "react";
 import { useMouse } from "react-use";
 
 export default function AuthPage({ children }: PropsWithChildren<{}>) {
   const container = React.useRef(null);
   const image = React.useRef(null);
   const motion = useMouse(container);
-
-  useEffect(() => {
-    console.log(motion);
-  }, [motion]);
 
   return (
     <div ref={container} className="min-h-screen flex">
