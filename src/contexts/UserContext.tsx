@@ -1,3 +1,4 @@
+import { random } from "faker";
 import React, {
   createContext,
   Dispatch,
@@ -15,7 +16,7 @@ export const UserContext = createContext<UserContextType>(undefined!);
 
 export const UserContextProvider: FC = ({ children }) => {
   const [user, setUser] = useState<{ username: string }>({
-    username: "Martin",
+    username: random.word(),
   });
 
   return (
