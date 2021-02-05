@@ -1,72 +1,34 @@
-import React, { useState } from "react";
-import HeaderLink from "./HeaderLink";
-import HeaderProfile from "./HeaderProfile";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { HeaderContextProvider } from "../../contexts/HeaderContext";
+import { UserContext } from "../../contexts/UserContext";
+import { HeaderLogged } from "./HeaderLogged";
+import { HeaderMenu } from "./HeaderMenu";
+import { HeaderSignIn } from "./HeaderSignIn";
 
 export default function Header() {
-  //TODO : manage the page active state
-  const [activeLink, setActiveLink] = useState(0);
-  const [collapsedHeader, setCollapsedHeader] = useState(false);
-
-  const Links = (
-    <div className="flex flex-col md:flex-row w-full text-center justify-between md:justify-start">
-      <HeaderLink
-        path={"/"}
-        text={"First link"}
-        active={activeLink === 1}
-        onClick={() => setActiveLink(1)}
-      />
-      <HeaderLink
-        path={"/"}
-        text={"Second link"}
-        active={activeLink === 2}
-        onClick={() => setActiveLink(2)}
-      />
-      <HeaderLink
-        path={"/"}
-        text={"Third link"}
-        active={activeLink === 3}
-        onClick={() => setActiveLink(3)}
-      />
-    </div>
-  );
-
-  const Profile = (
-    <div className="mx-2 px-2 flex-initial w-full flex md:w-auto">
-      <HeaderProfile />
-    </div>
-  );
+  const { user } = useContext(UserContext);
 
   return (
-    <div className="bg-blue-night-light header-container block md:flex px-4 text-lg sticky top-0 z-50 shadow-lg">
-      <div className="flex md:flex-row flex-col flex-1">
-        <div className="text-2xl mx-2 my-auto flex justify-between">
-          <div className="my-2 font-pacifico mr-4">
-            <Link to="/">Dreamtastic</Link>
+    <div className="bg-white bg-opacity-20 block md:flex text-lg sticky top-0 text-white z-50">
+      <div className="relative flex-1">
+        <div className="flex justify-between">
+          <div className="px-4 py-4">
+            <span className="font-pacifico text-3xl">Dreamtastic</span>
           </div>
-          <div className="flex md:hidden mx-2 px-2 flex-initial">
-            <FontAwesomeIcon
-              className="cursor-pointer my-auto"
-              icon={faBars}
-              onClick={() => setCollapsedHeader((prevState) => !prevState)}
-            />
+          <div className="flex pr-4 justify-center items-center space-x-2">
+            {user ? (
+              <HeaderContextProvider>
+                <HeaderLogged />
+              </HeaderContextProvider>
+            ) : (
+              <HeaderSignIn />
+            )}
           </div>
         </div>
-        <div className="hidden md:flex">{Links}</div>
-        {collapsedHeader ? (
-          <div className="flex flex-col md:hidden"> {Links} </div>
-        ) : (
-          ""
-        )}
+        <div className="flex justify-center flex-1 md:absolute top-0 left-1/2 right-1/2 bottom-0">
+          <HeaderMenu />
+        </div>
       </div>
-      <div className="hidden md:flex">{Profile}</div>
-      {collapsedHeader ? (
-        <div className="flex flex-col md:hidden"> {Profile} </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
