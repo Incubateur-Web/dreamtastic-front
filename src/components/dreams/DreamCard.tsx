@@ -5,6 +5,7 @@ import { fr } from "date-fns/locale";
 import { Link, useLocation } from "react-router-dom";
 import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
+import { MySwal } from "../swal/MySwal";
 
 type DreamCardProps = Dream;
 
@@ -16,6 +17,47 @@ export default function DreamCard(dream: DreamCardProps) {
   useClickAway(reactionBarRef, () => {
     setReactionBarVisible(false);
   });
+
+  const handleReportClick = () => {
+    const validationMessage = "Veuillez remplir ce champ";
+    MySwal.fire({
+      title: "Signaler un rêve",
+      input: "text",
+      inputAttributes: {
+        required: true,
+      },
+      validationMessage: validationMessage,
+      showCancelButton: true,
+      confirmButtonText: "Signaler",
+      showLoaderOnConfirm: true,
+      preConfirm: (reason: string) => {
+        if (!reason) {
+          MySwal.showValidationMessage(validationMessage);
+        } else {
+          //TODO : fetch API
+          console.log(`reporting dream ${dream.id} for ${reason}`);
+          return true;
+        }
+      },
+      allowOutsideClick: () => !MySwal.isLoading(),
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          console.log(`dream ${dream.id} reported !`);
+          MySwal.fire({
+            title: "Signalement effectué",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        MySwal.fire({
+          title: "Une erreur est survenue",
+          text: error.message,
+          icon: "error",
+        });
+      });
+  };
 
   return (
     <div className="w-full bg-gray-100 text-black rounded-xl">
@@ -59,7 +101,10 @@ export default function DreamCard(dream: DreamCardProps) {
             </span>
           </div>
         </div>
-        <div className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+        <div
+          onClick={handleReportClick}
+          className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
+        >
           Signaler
         </div>
       </div>
