@@ -1,4 +1,3 @@
-import { random } from "faker";
 import React, {
   createContext,
   Dispatch,
@@ -15,9 +14,7 @@ type UserContextType = {
 export const UserContext = createContext<UserContextType>(undefined!);
 
 export const UserContextProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<{ username: string }>({
-    username: random.word(),
-  });
+  const [user, setUser] = useState<{ username: string }>(undefined!);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
