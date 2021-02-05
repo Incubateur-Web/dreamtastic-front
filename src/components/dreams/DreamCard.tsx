@@ -68,17 +68,29 @@ export default function DreamCard(dream: DreamCardProps) {
 
   return (
     <div className="w-full bg-white text-white bg-opacity-25 text-black rounded-xl mb-8">
-      <div className="border-b border-gray-300 px-6 py-2">
-        <span className="text-xs">
-          {/* Par : {dream.author.username}{" "} */}
-          <span className="tooltip">
-            il y a{" "}
-            {formatDistanceToNow(new Date(dream.updatedAt), { locale: fr })}
-            <span className="tooltip-text text-xs">
-              {dream.updatedAt.toLocaleString()}
+      <div className="px-6 py-2 mt-2 flex">
+        <div className="w-10 h-10 rounded-full bg-white bg-opacity-40" />
+        <div className="ml-2">
+          <div>
+            {dream.author ? (
+              <>
+                {dream.author.firstName} {dream.author.lastName}
+              </>
+            ) : (
+              "Anonyme"
+            )}
+          </div>
+          <div className="text-xs">
+            {/* Par : {dream.author.username}{" "} */}
+            <span className="tooltip">
+              il y a{" "}
+              {formatDistanceToNow(new Date(dream.updatedAt), { locale: fr })}
+              <span className="tooltip-text text-xs">
+                {dream.updatedAt.toLocaleString()}
+              </span>
             </span>
-          </span>
-        </span>
+          </div>
+        </div>
       </div>
       <div className="text-xl uppercase px-6 py-3">
         {pathname === `/dream/${dream.id}` ? (
@@ -93,8 +105,8 @@ export default function DreamCard(dream: DreamCardProps) {
         <span>{dream.content}</span>
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
-      {/* Reactions */}
-      <div className="flex px-6 pb-3">
+      {/* Dream card footer */}
+      <div className="flex px-6 pb-3 border-t pt-1">
         <div
           className="flex space-x-4 w-1/4 leading-none select-none"
           role="button"
