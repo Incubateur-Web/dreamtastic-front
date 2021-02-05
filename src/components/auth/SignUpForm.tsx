@@ -19,7 +19,7 @@ const schema = Joi.object<LoginSchema>({
     .email({ tlds: { allow: false } })
     .required(),
   name: Joi.string().required(),
-  password: Joi.string().required(),
+  password: Joi.string().required().min(8),
   repeat_password: Joi.ref("password"),
 });
 
