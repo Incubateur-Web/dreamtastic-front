@@ -23,7 +23,7 @@ export default function HeaderProfileSubmenu({
     <div
       className={clsx(
         [visible ? "block" : "hidden"],
-        "absolute bg-gray-800 w-48 right-0 "
+        "absolute bg-gray-800 w-48 right-0 z-50"
       )}
     >
       <Link

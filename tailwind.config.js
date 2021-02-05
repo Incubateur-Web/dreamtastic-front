@@ -9,12 +9,22 @@ module.exports = {
         "blue-night": "#2A4A89",
         "blue-night-light": "#3464C0",
       },
+      backgroundImage: {
+        "layout-color":
+          "linear-gradient(180deg, #3B5CD0 0%, rgba(89, 116, 215, 0.8) 100%)",
+      },
       textColor: {
         "blue-night": "#2f4388",
         secondary: "#65676B",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
+      },
+      borderWidth: {
+        3: "3px",
+      },
+      margin: {
+        "3px": "3px",
       },
       flex: {
         2: "2",
