@@ -13,7 +13,7 @@ export default function WidgetContainer({
   return (
     <div className={clsx("text-gray-900 ", width)}>
       <div className="overflow-hidden relative text-2xl">
-        <div className="rounded-full flex bg-white bg-opacity-25 px-2 py-1">
+        <div className="rounded-full flex bg-white bg-opacity-25 px-3 py-1">
           <FontAwesomeIcon
             className="mr-2 my-auto text-white"
             icon={faSearch}
