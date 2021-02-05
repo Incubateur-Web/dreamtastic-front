@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
+import axios from "axios";
+import { ButtonLoaderIcon } from "../icons/ButtonLoaderIcon";
 
 type LoginSchema = {
   email: string;
+  name: string;
   password: string;
   repeat_password: string;
 };
@@ -15,6 +18,7 @@ const schema = Joi.object<LoginSchema>({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
+  name: Joi.string().required(),
   password: Joi.string().required(),
   repeat_password: Joi.ref("password"),
 });
@@ -24,16 +28,24 @@ export default function SignUpForm() {
     resolver: joiResolver(schema),
     mode: "all",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const { push } = useHistory();
 
-  const onSubmit = ({ email, password, repeat_password }: LoginSchema) => {
-    //fetch user form database
-    console.log(email, password, repeat_password);
+  const onSubmit = async ({ email, name, password }: LoginSchema) => {
+    setIsLoading(true);
+    try {
+      await axios.post("/users/", { email, password, name });
+      push("/auth/signin");
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
   };
 
   return (
     <form
       noValidate
-      className="p-4 space-y-6"
+      className="p-4 space-y-6 text-white w-full"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col">
@@ -44,13 +56,29 @@ export default function SignUpForm() {
           type="email"
           id="email"
           name="email"
-          className="bg-white placeholder-gray-500 border rounded-md overflow-hidden text-xl p-2"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
           placeholder="Email"
           autoFocus
           ref={register}
         />
         {errors.email && (
-          <span className="text-red-500 text-sm">{errors.email.message}</span>
+          <span className="text-gray-200 text-sm">{errors.email.message}</span>
+        )}
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="email" className="px-1 text-lg">
+          Nom
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
+          placeholder="Nom"
+          ref={register}
+        />
+        {errors.name && (
+          <span className="text-gray-200 text-sm">{errors.name.message}</span>
         )}
       </div>
       <div className="flex flex-col">
@@ -61,12 +89,12 @@ export default function SignUpForm() {
           type="password"
           id="password"
           name="password"
-          className="bg-white placeholder-gray-500 border rounded-md overflow-hidden text-xl p-2"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
           placeholder="Mot de passe"
           ref={register}
         />
         {errors.password && (
-          <span className="text-red-500 text-sm">
+          <span className="text-gray-200 text-sm">
             {errors.password.message}
           </span>
         )}
@@ -79,12 +107,12 @@ export default function SignUpForm() {
           type="password"
           id="repeat_password"
           name="repeat_password"
-          className="bg-white placeholder-gray-500 border rounded-md overflow-hidden text-xl p-2"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-xl p-2 focus:outline-none"
           placeholder="Mot de passe"
           ref={register}
         />
         {errors.repeat_password && (
-          <span className="text-red-500 text-sm">
+          <span className="text-gray-200 text-sm">
             {errors.repeat_password.message}
           </span>
         )}
@@ -94,16 +122,17 @@ export default function SignUpForm() {
           type="submit"
           disabled={!formState.isValid}
           className={clsx(
-            [!formState.isValid && "bg-opacity-50"],
-            "w-full bg-blue-night rounded-full py-2 text-white font-bold focus:outline-none focus:shadow-outline"
+            [!formState.isValid ? "bg-opacity-10" : "bg-opacity-20"],
+            "w-full bg-white text-3xl rounded-lg py-2 text-white font-bold focus:outline-none focus:shadow-outline flex space-x-2 justify-center items-center"
           )}
         >
-          Valider
+          {isLoading && <ButtonLoaderIcon />}
+          <span>S'inscrire</span>
         </button>
         <div className="w-full mt-2 flex flex-row-reverse justify-between px-1 text-sm">
           <div>
             Déjà enregistré ?{" "}
-            <Link to="/auth/signin" className="hover:underline text-blue-700">
+            <Link to="/auth/signin" className="text-white underline">
               Se connecter
             </Link>
           </div>
