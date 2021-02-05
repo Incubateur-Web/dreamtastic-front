@@ -6,6 +6,13 @@ import { Link, useLocation } from "react-router-dom";
 import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
 import { MySwal } from "../swal/MySwal";
+import {
+  faCommentDots,
+  faFlag,
+  faShare,
+  faThumbsUp,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type DreamCardProps = Dream;
 
@@ -88,23 +95,36 @@ export default function DreamCard(dream: DreamCardProps) {
       </div>
       {/* Reactions */}
       <div className="flex px-6 pb-3">
-        <div className="flex space-x-4 leading-none select-none" role="button">
+        <div
+          className="flex space-x-4 w-1/4 leading-none select-none"
+          role="button"
+        >
           <div
-            className="flex my-auto dream-card-button"
+            className="flex my-auto flex w-full dream-card-button"
             onMouseDown={(e) => {
               e.stopPropagation();
               setReactionBarVisible((visible) => !visible);
             }}
           >
-            <span role="img" aria-label="J'aime">
-              👍 J'aime
+            <span className="text-center m-auto" role="img" aria-label="J'aime">
+              <FontAwesomeIcon className="mr-2" icon={faThumbsUp} />
+              J'aime
             </span>
           </div>
         </div>
+        <div className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+          <FontAwesomeIcon className="mr-2" icon={faCommentDots} />
+          Commenter
+        </div>
+        <div className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+          <FontAwesomeIcon className="mr-2" icon={faShare} />
+          Partager
+        </div>
         <div
           onClick={handleReportClick}
-          className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
+          className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
         >
+          <FontAwesomeIcon className="mr-2" icon={faFlag} />
           Signaler
         </div>
       </div>
