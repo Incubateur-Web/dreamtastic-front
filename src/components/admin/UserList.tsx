@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { User } from "../../types/API/UserType";
 import UserItem from "./UserItem";
 import { faSpinner, faTimes, faUsers } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +15,8 @@ const fakeUsers: Array<User> = [
 export default function UserList() {
   const [userList, setUserList] = useState<Array<User>>(fakeUsers); // initial state
   const [processingUsers, setProcessingUser] = useState<Array<User>>([]);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [displayedUsers, setDisplayedUsers] = useState<Array<User>>([]);
 
   const handleDeleteUser = (user: User) => {
     setProcessingUser((prevState) => [...prevState, user]);
@@ -25,14 +27,51 @@ export default function UserList() {
       setProcessingUser((prevState) =>
         prevState.filter((oneUser) => oneUser.id !== user.id)
       );
+      setDisplayedUsers((prevState) =>
+        prevState.filter((oneUser) => oneUser.id !== user.id)
+      );
     }, 1500);
   };
 
+  useEffect(() => {
+    if (!searchValue) {
+      setDisplayedUsers(userList);
+    } else {
+      const newUserList = userList.filter((user) => {
+        return (
+          user.id.includes(searchValue) ||
+          user.lastName.includes(searchValue) ||
+          user.firstName.includes(searchValue) ||
+          user.username.includes(searchValue)
+        );
+      });
+      setDisplayedUsers(newUserList);
+    }
+  }, [searchValue]);
+
+  useEffect(() => {
+    //TODO : fetch from API
+    setDisplayedUsers(userList);
+  }, []);
+
   return (
-    <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-100 rounded text-black">
-      <div className="mb-2 text-lg">
-        <FontAwesomeIcon className="mr-2" icon={faUsers} />
-        Utilisateurs
+    <div className="w-full md:w-1/2 py-2 px-4 md:mx-2 my-2 md:my-0 bg-gray-300 rounded text-black">
+      <div className="flex justify-between mb-2">
+        <div className="my-auto text-lg">
+          <FontAwesomeIcon className="mr-2" icon={faUsers} />
+          Utilisateurs
+        </div>
+        <div className="flex">
+          <input
+            type="text"
+            defaultValue={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.currentTarget.value);
+            }}
+            className="px-2 rounded"
+            placeholder="Rechercher"
+          />
+        </div>
       </div>
       <table className="w-full">
         <thead>
@@ -44,7 +83,7 @@ export default function UserList() {
           </tr>
         </thead>
         <tbody>
-          {userList.map((user) => {
+          {displayedUsers.map((user) => {
             const processing = processingUsers.includes(user);
             const actions = processing ? (
               <>
