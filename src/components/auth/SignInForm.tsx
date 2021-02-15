@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
+import { ButtonLoaderIcon } from "../icons/ButtonLoaderIcon";
+import axios from "axios";
+import { TokensType, UserContext } from "../../contexts/UserContext";
+import { addMinutes } from "date-fns/esm";
 
 type LoginSchema = {
   email: string;
@@ -14,7 +18,7 @@ const schema = Joi.object<LoginSchema>({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
-  password: Joi.string().required(),
+  password: Joi.string().required().min(8),
 });
 
 export default function SignInForm() {
@@ -23,15 +27,31 @@ export default function SignInForm() {
     mode: "all",
   });
 
-  const onSubmit = ({ email, password }: LoginSchema) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { push } = useHistory();
+  const { setTokens } = useContext(UserContext);
+
+  const onSubmit = async ({ email, password }: LoginSchema) => {
     //fetch user form database
-    console.log(email, password);
+    setIsLoading(true);
+    try {
+      const { data } = await axios.post<TokensType>("/auth/refreshToken", {
+        email,
+        password,
+      });
+
+      setTokens({ ...data, expires: addMinutes(new Date(), 58) });
+      push("/");
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
   };
 
   return (
     <form
       noValidate
-      className="p-4 space-y-6"
+      className="p-4 space-y-6 w-full text-white"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col">
@@ -42,13 +62,13 @@ export default function SignInForm() {
           type="email"
           id="email"
           name="email"
-          className="bg-white placeholder-gray-500 border rounded-md overflow-hidden text-xl p-2"
+          className="bg-white  bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Email"
           autoFocus
           ref={register}
         />
         {errors.email && (
-          <span className="text-red-500 text-sm">{errors.email.message}</span>
+          <span className="text-gray-200 text-sm">{errors.email.message}</span>
         )}
       </div>
       <div className="flex flex-col">
@@ -59,28 +79,29 @@ export default function SignInForm() {
           type="password"
           id="password"
           name="password"
-          className="bg-white placeholder-gray-500 border rounded-md overflow-hidden text-xl p-2"
+          className="bg-white bg-opacity-20 placeholder-white rounded-md overflow-hidden text-2xl p-2 focus:outline-none"
           placeholder="Mot de passe"
           ref={register}
         />
         {errors.password && (
-          <span className="text-red-500 text-sm">
+          <span className="text-gray-200 text-sm">
             {errors.password.message}
           </span>
         )}
       </div>
-      <div>
+      <div className="pt-8">
         <button
           type="submit"
           disabled={!formState.isValid}
           className={clsx(
-            [!formState.isValid && "bg-opacity-50"],
-            "w-full bg-blue-night rounded-full py-2 text-white font-bold focus:outline-none focus:shadow-outline"
+            [!formState.isValid ? "bg-opacity-10" : "bg-opacity-20"],
+            "w-full bg-white text-3xl rounded-lg py-2 text-white font-bold focus:outline-none focus:shadow-outline flex space-x-2 justify-center items-center"
           )}
         >
-          Se connecter
+          {isLoading && <ButtonLoaderIcon />}
+          <span>Se connecter</span>
         </button>
-        <div className="w-full mt-2 flex flex-row-reverse justify-between px-1 text-blue-700 text-sm">
+        <div className="w-full mt-2 flex flex-row-reverse justify-between px-1 text-gray-100 text-sm">
           <Link to="/auth/forgot-password" className="hover:underline">
             Mot de passe oublié ?
           </Link>

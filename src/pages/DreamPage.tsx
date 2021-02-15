@@ -8,7 +8,6 @@ import { useQueryLazy } from "../hooks/useQueryLazy";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { Dream } from "../types/API/DreamType";
 import { TopicWidget } from "../components/widgets/TopicWidget";
-import Loader from "../components/Loader";
 
 /**
  * display a single dream

@@ -29,7 +29,7 @@ export const HeaderLogged = () => {
           <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-2 pr-4 space-x-3">
             <div className="w-8 h-8 rounded-full bg-white bg-opacity-40" />
             <div className="my-auto">
-              <span>{user.username}</span>
+              <span>{user!.name}</span>
             </div>
           </div>
         </Link>
@@ -53,7 +53,7 @@ export const HeaderLogged = () => {
 type DropdownMenuProps = { show: boolean };
 
 const DropDownMenu = ({ show }: DropdownMenuProps) => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setTokens } = useContext(UserContext);
   return (
     <div
       className={clsx(
@@ -71,7 +71,10 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
         icon={<FontAwesomeIcon icon={faCog} />}
       />
       <DropDownItem
-        onClick={() => setUser(undefined!)}
+        onClick={() => {
+          setUser(undefined!);
+          setTokens({});
+        }}
         label="Deconnexion"
         icon={<FontAwesomeIcon icon={faSignOutAlt} />}
       />

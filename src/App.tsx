@@ -15,8 +15,8 @@ const SignUpForm = lazy(() => import("./components/auth/SignUpForm"));
 
 export default function App() {
   return (
-    <UserContextProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserContextProvider>
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path="/" component={HomePage} />
@@ -42,7 +42,7 @@ export default function App() {
             </Route>
           </Switch>
         </Suspense>
-      </BrowserRouter>
-    </UserContextProvider>
+      </UserContextProvider>
+    </BrowserRouter>
   );
 }
