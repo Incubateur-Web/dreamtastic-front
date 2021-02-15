@@ -23,7 +23,7 @@ export default function HomePage() {
 
   return (
     <DefaultLayout>
-      <div className="py-5 flex space-x-5 w-full">
+      <div className="py-5 flex space-x-5">
         <div className="space-y-4 w-full flex">
           <TopicWidget />
           {loading ? (

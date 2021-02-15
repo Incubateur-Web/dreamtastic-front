@@ -5,7 +5,7 @@ import imageNotFound from "../../assets/images/notFound.svg";
 export default function NotFoundPage() {
   return (
     <DefaultLayout>
-      <div className="w-full flex-1 flex px-10 items-center">
+      <div className="w-full flex-1 flex p-10 items-center">
         <div className="w-1/2">
           <img src={imageNotFound} alt="" />
         </div>
