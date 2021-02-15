@@ -67,7 +67,7 @@ export default function DreamCard(dream: DreamCardProps) {
   };
 
   return (
-    <div className="w-full bg-white text-white bg-opacity-25 text-black rounded-xl mb-8">
+    <div className="w-full bg-white text-white bg-opacity-25 rounded-xl mb-8">
       <div className="px-6 py-2 mt-2 flex">
         <div className="w-10 h-10 rounded-full bg-white bg-opacity-40" />
         <div className="ml-2">
@@ -105,6 +105,7 @@ export default function DreamCard(dream: DreamCardProps) {
         <span>{dream.content}</span>
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
+      <div className="text-right w-full px-4 py-2">3 commentaires</div>
       {/* Dream card footer */}
       <div className="flex px-6 pb-3 border-t pt-1">
         <div

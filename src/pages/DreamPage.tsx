@@ -52,7 +52,7 @@ export default function DreamPage() {
           <TopicWidget />
           <div className="flex flex-col w-2/4 px-4 my-0">
             <DreamCard {...dream} />
-            <div className="text-black bg-gray-200 rounded-lg divide-y-2 divide-gray-400">
+            <div className="bg-white text-white bg-opacity-25 rounded-xl">
               <CommentList dreamId={params.id} />
             </div>
           </div>
