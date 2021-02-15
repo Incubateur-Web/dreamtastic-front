@@ -7,6 +7,8 @@ import DreamCardSkeleton from "../components/skeleton/DreamCardSkeleton";
 import { useQueryLazy } from "../hooks/useQueryLazy";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { Dream } from "../types/API/DreamType";
+import { TopicWidget } from "../components/widgets/TopicWidget";
+import Loader from "../components/Loader";
 
 /**
  * display a single dream
@@ -45,10 +47,15 @@ export default function DreamPage() {
 
   return (
     <DefaultLayout>
-      <div className="space-y-6">
-        <DreamCard {...dream} />
-        <div className="text-black bg-gray-200 rounded-lg divide-y-2 divide-gray-400">
-          <CommentList dreamId={params.id} />
+      <div className="py-5 flex space-x-5">
+        <div className="space-y-4 w-full flex">
+          <TopicWidget />
+          <div className="flex flex-col w-2/4 px-4 my-0">
+            <DreamCard {...dream} />
+            <div className="text-black bg-gray-200 rounded-lg divide-y-2 divide-gray-400">
+              <CommentList dreamId={params.id} />
+            </div>
+          </div>
         </div>
       </div>
     </DefaultLayout>
