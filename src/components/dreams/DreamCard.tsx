@@ -106,7 +106,12 @@ export default function DreamCard(dream: DreamCardProps) {
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
       <div className="text-right w-full px-4 py-2">
-        {dream.comments ? dream.comments.length : 0} commentaires
+        <Link
+          to={"/dream/" + dream.id}
+          className="cursor-pointer hover:underline"
+        >
+          {dream.comments ? dream.comments.length : 0} commentaires
+        </Link>
       </div>
       {/* Dream card footer */}
       <div className="flex px-6 pb-3 border-t pt-1">
