@@ -1,12 +1,35 @@
 import Axios from "axios";
 import React from "react";
 import { useQuery } from "../../../hooks/useQuery";
+import CommentCard from "../../CommentCard";
+import { Comment } from "../../../types/API/CommentType";
+import { generateComments } from "../../../mocks/Comment";
 
 type Props = { dreamId: string };
+
+const fakeComments = generateComments(3);
 
 export default function CommentList({ dreamId }: Props) {
   const { data } = useQuery(`/dreams/${dreamId}/comments`, Axios.get);
 
+  console.log(data ? data.comments : "tg");
+
   if (!data) return <></>;
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div className="p-4 text-white">
+      <div className="flex mb-2">
+        <div className="w-10 h-10 rounded-full bg-white bg-opacity-40 mr-3" />
+        <div className="my-auto w-full rounded-full flex bg-white bg-opacity-25 px-3 py-2">
+          <input
+            type="text"
+            className="placeholder-white bg-transparent focus:outline-none text-white flex-1"
+            placeholder="Ecrivez un commentaire..."
+          />
+        </div>
+      </div>
+      {data.comments.map((comment: Comment) => {
+        return <CommentCard comment={comment} />;
+      })}
+    </div>
+  );
 }
