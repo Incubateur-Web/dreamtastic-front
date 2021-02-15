@@ -3,16 +3,11 @@ import React from "react";
 import { useQuery } from "../../../hooks/useQuery";
 import CommentCard from "../../CommentCard";
 import { Comment } from "../../../types/API/CommentType";
-import { generateComments } from "../../../mocks/Comment";
 
 type Props = { dreamId: string };
 
-const fakeComments = generateComments(3);
-
 export default function CommentList({ dreamId }: Props) {
   const { data } = useQuery(`/dreams/${dreamId}/comments`, Axios.get);
-
-  console.log(data ? data.comments : "tg");
 
   if (!data) return <></>;
   return (
