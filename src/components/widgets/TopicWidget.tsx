@@ -4,20 +4,22 @@ import { useQuery } from "../../hooks/useQuery";
 import { Topic } from "../../types/API/TopicType";
 import Loader from "../Loader";
 import WidgetContainer from "./WidgetContainer";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function TopicWidget() {
   const { data, error, loading } = useQuery("/topics", Axios.get);
 
   if (error)
     return (
-      <WidgetContainer title="Topics" width="w-1/4">
+      <WidgetContainer title="Topics" width="w-1/4 px-4">
         <div className="text-red-500">Error fetching topics</div>
       </WidgetContainer>
     );
 
   if (data === null)
     return (
-      <WidgetContainer title="Topics" width="w-1/4">
+      <WidgetContainer title="Topics" width="w-1/4 px-2">
         {loading ? (
           <Loader color="gray" />
         ) : (
@@ -27,15 +29,18 @@ export function TopicWidget() {
     );
 
   return (
-    <WidgetContainer title="Topics" width="w-1/4">
-      <div className="px-4">
+    <WidgetContainer title="Topics" width="w-1/4 px-2">
+      <div className="mt-2">
         {data.topics.map((topic: Topic) => {
           return (
             <div
               key={topic.id}
-              style={{ color: topic.color }}
-              className="text-xl font-semibold"
+              className="text-xl px-4 py-1 text-white font-semibold rounded hover:bg-white cursor-pointer hover:bg-opacity-25"
             >
+              <FontAwesomeIcon
+                className="mr-3 my-auto text-white"
+                icon={faClock}
+              />
               {topic.name}
             </div>
           );

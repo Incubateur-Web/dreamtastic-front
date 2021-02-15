@@ -6,6 +6,13 @@ import { Link, useLocation } from "react-router-dom";
 import ReactionBar from "../reaction/ReactionBar";
 import { useClickAway } from "react-use";
 import { MySwal } from "../swal/MySwal";
+import {
+  faCommentDots,
+  faFlag,
+  faShare,
+  faThumbsUp,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type DreamCardProps = Dream;
 
@@ -60,18 +67,30 @@ export default function DreamCard(dream: DreamCardProps) {
   };
 
   return (
-    <div className="w-full bg-gray-100 text-black rounded-xl">
-      <div className="border-b border-gray-300 px-6 py-2">
-        <span className="text-xs">
-          {/* Par : {dream.author.username}{" "} */}
-          <span className="tooltip">
-            il y a{" "}
-            {formatDistanceToNow(new Date(dream.updatedAt), { locale: fr })}
-            <span className="tooltip-text text-xs">
-              {dream.updatedAt.toLocaleString()}
+    <div className="w-full bg-white text-white bg-opacity-25 rounded-xl mb-8">
+      <div className="px-6 py-2 mt-2 flex">
+        <div className="w-10 h-10 rounded-full bg-white bg-opacity-40" />
+        <div className="ml-2">
+          <div>
+            {dream.author ? (
+              <>
+                {dream.author.firstName} {dream.author.lastName}
+              </>
+            ) : (
+              "Anonyme"
+            )}
+          </div>
+          <div className="text-xs">
+            {/* Par : {dream.author.username}{" "} */}
+            <span className="tooltip">
+              il y a{" "}
+              {formatDistanceToNow(new Date(dream.updatedAt), { locale: fr })}
+              <span className="tooltip-text text-xs">
+                {dream.updatedAt.toLocaleString()}
+              </span>
             </span>
-          </span>
-        </span>
+          </div>
+        </div>
       </div>
       <div className="text-xl uppercase px-6 py-3">
         {pathname === `/dream/${dream.id}` ? (
@@ -86,25 +105,46 @@ export default function DreamCard(dream: DreamCardProps) {
         <span>{dream.content}</span>
         <ReactionBar ref={reactionBarRef} visible={reactionBarVisible} />
       </div>
-      {/* Reactions */}
-      <div className="flex px-6 pb-3">
-        <div className="flex space-x-4 leading-none select-none" role="button">
+      <div className="text-right w-full px-4 py-2">
+        <Link
+          to={"/dream/" + dream.id}
+          className="cursor-pointer hover:underline"
+        >
+          {dream.comments ? dream.comments.length : 0} commentaires
+        </Link>
+      </div>
+      {/* Dream card footer */}
+      <div className="flex px-6 pb-3 border-t pt-1">
+        <div
+          className="flex space-x-4 w-1/4 leading-none select-none"
+          role="button"
+        >
           <div
-            className="flex my-auto dream-card-button"
+            className="flex my-auto flex w-full dream-card-button"
             onMouseDown={(e) => {
               e.stopPropagation();
               setReactionBarVisible((visible) => !visible);
             }}
           >
-            <span role="img" aria-label="J'aime">
-              👍 J'aime
+            <span className="text-center m-auto" role="img" aria-label="J'aime">
+              <FontAwesomeIcon className="mr-2" icon={faThumbsUp} />
+              J'aime
             </span>
           </div>
         </div>
+        <div className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+          <FontAwesomeIcon className="mr-2" icon={faCommentDots} />
+          Commenter
+        </div>
+        <div className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer">
+          <FontAwesomeIcon className="mr-2" icon={faShare} />
+          Partager
+        </div>
         <div
           onClick={handleReportClick}
-          className="dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
+          className="w-1/4 text-center dream-card-button my-auto space-x-4 leading-none select-none cursor-pointer"
         >
+          <FontAwesomeIcon className="mr-2" icon={faFlag} />
           Signaler
         </div>
       </div>
