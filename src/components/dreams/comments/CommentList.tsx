@@ -23,7 +23,7 @@ export default function CommentList({ dreamId }: Props) {
         </div>
       </div>
       {data.comments.map((comment: Comment) => {
-        return <CommentCard comment={comment} />;
+        return <CommentCard key={comment.id} comment={comment} />;
       })}
     </div>
   );
