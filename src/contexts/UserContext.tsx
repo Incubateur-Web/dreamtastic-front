@@ -17,7 +17,6 @@ type UserType = {
   lastConnection: string | Date;
   name: string;
   updatedAt: string | Date;
-  _id: string;
 };
 
 type UserContextType = {
