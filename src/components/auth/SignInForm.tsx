@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -6,6 +6,8 @@ import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { ButtonLoaderIcon } from "../icons/ButtonLoaderIcon";
 import axios from "axios";
+import { TokensType, UserContext } from "../../contexts/UserContext";
+import { addMinutes } from "date-fns/esm";
 
 type LoginSchema = {
   email: string;
@@ -26,15 +28,24 @@ export default function SignInForm() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const { setTokens } = useContext(UserContext);
 
   const onSubmit = async ({ email, password }: LoginSchema) => {
     //fetch user form database
     setIsLoading(true);
     try {
-      const data = await axios.post("/auth/refreshToken", { email, password });
+      const { data } = await axios.post<TokensType>("/auth/refreshToken", {
+        email,
+        password,
+      });
+
+      localStorage.setItem("session_token", JSON.stringify(data));
+      setTokens({ ...data, expires: addMinutes(new Date(), 58) });
+
       console.log(data);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   };
 
