@@ -84,7 +84,8 @@ export const UserContextProvider: FC = ({ children }) => {
     const expireDate = new Date(tokens.expires || new Date());
     const currentDate = new Date();
 
-    if (!tokens.access_token) return;
+    if (!tokens.access_token)
+      return localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
     if (isBefore(expireDate, currentDate)) {
       getNewAccessToken();
       return;

@@ -53,7 +53,7 @@ export const HeaderLogged = () => {
 type DropdownMenuProps = { show: boolean };
 
 const DropDownMenu = ({ show }: DropdownMenuProps) => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setTokens } = useContext(UserContext);
   return (
     <div
       className={clsx(
@@ -71,7 +71,10 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
         icon={<FontAwesomeIcon icon={faCog} />}
       />
       <DropDownItem
-        onClick={() => setUser(undefined!)}
+        onClick={() => {
+          setUser(undefined!);
+          setTokens({});
+        }}
         label="Deconnexion"
         icon={<FontAwesomeIcon icon={faSignOutAlt} />}
       />
