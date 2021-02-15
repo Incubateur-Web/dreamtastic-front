@@ -120,7 +120,7 @@ export default function DreamCard(dream: DreamCardProps) {
           role="button"
         >
           <div
-            className="flex my-auto flex w-full dream-card-button"
+            className="flex my-auto w-full dream-card-button"
             onMouseDown={(e) => {
               e.stopPropagation();
               setReactionBarVisible((visible) => !visible);

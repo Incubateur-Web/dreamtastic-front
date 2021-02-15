@@ -10,9 +10,19 @@ import React, {
   useState,
 } from "react";
 
+type UserType = {
+  createdAt: string | Date;
+  email: string;
+  id: string;
+  lastConnection: string | Date;
+  name: string;
+  updatedAt: string | Date;
+  _id: string;
+};
+
 type UserContextType = {
-  user: { username: string };
-  setUser: Dispatch<SetStateAction<{ username: string }>>;
+  user?: UserType;
+  setUser: Dispatch<SetStateAction<UserType>>;
   setTokens: React.Dispatch<React.SetStateAction<LocalStorageTokens>>;
 };
 
@@ -28,7 +38,7 @@ const LOCALSTORAGE_TOKEN_KEY = "session_token";
 export const UserContext = createContext<UserContextType>(undefined!);
 
 export const UserContextProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<{ username: string }>(undefined!);
+  const [user, setUser] = useState<UserType>(undefined!);
 
   const [tokens, setTokens] = useState<LocalStorageTokens>(() => {
     const tokens = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
@@ -39,8 +49,6 @@ export const UserContextProvider: FC = ({ children }) => {
 
   const getNewAccessToken = useCallback(async () => {
     try {
-      console.log("get new AccessToekn");
-
       const { data } = await axios.post("/auth/accessToken", {
         refresh_token: tokens.refresh_token,
       });
@@ -54,9 +62,29 @@ export const UserContextProvider: FC = ({ children }) => {
     }
   }, [tokens.refresh_token]);
 
+  const fetchUser = useCallback(async () => {
+    if (tokens.access_token) {
+      try {
+        const { data } = await axios.get<{ user: UserType }>("/users/info", {
+          headers: { "x-access-token": tokens.access_token },
+        });
+
+        setUser(data.user);
+      } catch (error) {
+        await getNewAccessToken();
+      }
+    }
+  }, [tokens.access_token, getNewAccessToken]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
   useEffect(() => {
     const expireDate = new Date(tokens.expires || new Date());
     const currentDate = new Date();
+
+    if (!tokens.access_token) return;
     if (isBefore(expireDate, currentDate)) {
       getNewAccessToken();
       return;
@@ -64,8 +92,6 @@ export const UserContextProvider: FC = ({ children }) => {
     const diffMinutes = Math.abs(differenceInMinutes(new Date(), expireDate));
 
     const timeout = setTimeout(() => {
-      console.log("timeout");
-
       getNewAccessToken();
     }, diffMinutes * 60 * 1000);
 

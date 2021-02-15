@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
@@ -28,6 +28,7 @@ export default function SignInForm() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const { push } = useHistory();
   const { setTokens } = useContext(UserContext);
 
   const onSubmit = async ({ email, password }: LoginSchema) => {
@@ -39,10 +40,8 @@ export default function SignInForm() {
         password,
       });
 
-      localStorage.setItem("session_token", JSON.stringify(data));
       setTokens({ ...data, expires: addMinutes(new Date(), 58) });
-
-      console.log(data);
+      push("/");
     } catch (error) {
       console.error(error);
       setIsLoading(false);
