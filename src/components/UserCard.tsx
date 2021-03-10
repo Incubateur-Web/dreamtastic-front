@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const UserCard = () => (
-  <div className="w-1/4 rounded-xl overflow-hidden relative bg-gray-300">
+  <div className="w-3/4 md:w-1/4 rounded-xl overflow-hidden relative bg-gray-300 flex-none md:flex-auto">
     <img
       src="https://images.unsplash.com/photo-1500259783852-0ca9ce8a64dc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
       alt=""
