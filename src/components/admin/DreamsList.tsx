@@ -3,16 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud, faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Dream } from "../../types/API/DreamType";
 import DreamItem from "./DreamItem";
-import { generateDream } from "../../mocks/Dream";
-
-const fakeDreams: Array<Dream> = [
-  generateDream(),
-  generateDream(),
-  generateDream(),
-];
 
 export default function DreamList() {
-  const [dreamsList, setDreamsList] = useState<Array<Dream>>(fakeDreams);
+  const [dreamsList, setDreamsList] = useState<Array<Dream>>([]);
   const [processingDreams, setProcessingDreams] = useState<Array<Dream>>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [displayedDreams, setDisplayedDreams] = useState<Array<Dream>>([]);
