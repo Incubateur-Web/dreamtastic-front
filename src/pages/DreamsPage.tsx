@@ -88,7 +88,7 @@ function SearchZone() {
               <span role="button" className="text-violet underline">
                 Effacer les filtres
               </span>
-              <button className="rounded-full bg-dark-violet hover:bg-light-violet text-white font-bold px-6 py-2 uppercase">
+              <button className="rounded-full bg-dark-violet hover:bg-light-violet text-white font-bold px-6 py-2 uppercase focus:outline-none">
                 Appliquer
               </button>
             </div>
