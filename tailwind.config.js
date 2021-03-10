@@ -10,7 +10,8 @@ module.exports = {
       backgroundColor: {
         "blue-night": "#2A4A89",
         "blue-night-light": "#3464C0",
-        violet: "#7f13f6",
+        "light-violet": "#9527f6",
+        "dark-violet": "#7c16f6",
       },
       backgroundImage: {
         "layout-color": "white",
