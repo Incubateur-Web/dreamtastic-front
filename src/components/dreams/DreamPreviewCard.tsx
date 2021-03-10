@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export const DreamPreviewCard = () => {
   return (
     <div className="w-3/4 md:w-1/4 rounded-xl overflow-hidden relative bg-gray-300 flex-none md:flex-auto">
