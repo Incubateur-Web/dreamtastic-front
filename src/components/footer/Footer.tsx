@@ -10,7 +10,7 @@ import {
 
 export default function Footer() {
   return (
-    <div className="flex justify-between text-gray-900 border-t border-gray-300 py-8 border-opacity-75 md:mx-20 lg:mx-40">
+    <div className="flex justify-between text-gray-900 border-t border-gray-300 py-8 border-opacity-75 md:mx-20 lg:mx-40 flex-shrink-0">
       <Link to="/" className="my-auto">
         <img src={logo} alt="logo" width="150" height="75" className="mr-10" />
       </Link>

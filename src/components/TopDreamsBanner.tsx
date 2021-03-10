@@ -1,4 +1,3 @@
-import React from "react";
 import { TopicCard } from "./TopicCard";
 
 const DREAM =
