@@ -20,6 +20,9 @@ module.exports = {
       boxShadow: {
         header: "0 0 10px #4a4a4a",
       },
+      borderColor: {
+        main: "#4ca8b9",
+      },
       borderWidth: {
         3: "3px",
       },
