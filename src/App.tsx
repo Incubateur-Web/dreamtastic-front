@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Loader from "./components/Loader";
-import { UserContextProvider } from "./contexts/UserContext";
+import { ApplicationContextProvider } from "./contexts/ApplicationContext";
 import NotFoundPage from "./pages/error/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -17,7 +17,7 @@ const DreamsPage = lazy(() => import("./pages/DreamsPage"));
 export default function App() {
   return (
     <BrowserRouter>
-      <UserContextProvider>
+      <ApplicationContextProvider>
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path="/" component={HomePage} />
@@ -44,7 +44,7 @@ export default function App() {
             </Route>
           </Switch>
         </Suspense>
-      </UserContextProvider>
+      </ApplicationContextProvider>
     </BrowserRouter>
   );
 }

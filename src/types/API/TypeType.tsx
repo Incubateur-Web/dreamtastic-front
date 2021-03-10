@@ -1,6 +1,7 @@
-import { BaseTable } from "./BaseType";
-
-export type Type = {
-  name: string;
+export type ApiType = {
   color: string;
+  createdAt: string;
+  id: string;
+  name: string;
+  updatedAt: string;
 };

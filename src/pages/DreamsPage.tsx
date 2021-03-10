@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import clsx from "clsx";
 import { useClickAway } from "react-use";
+import { TypeContext } from "../contexts/TypeContext";
+import { TopicsContext } from "../contexts/TopicsContext";
 
 function Dreams() {
   return (
@@ -20,6 +22,9 @@ function Dreams() {
 function SearchZone() {
   const [open, setOpen] = useState(true);
   const ref = useRef(null);
+
+  const { types } = useContext(TypeContext);
+  const { topics } = useContext(TopicsContext);
 
   useClickAway(ref, () => setOpen(false));
 
@@ -55,23 +60,14 @@ function SearchZone() {
                 <span className="text-violet text-xl font-bold uppercase">
                   Type du rêve
                 </span>
+
                 <div className="flex flex-col">
-                  <label className="space-x-2">
-                    <input type="checkbox" />
-                    <span>Rêve</span>
-                  </label>
-                  <label className="space-x-2">
-                    <input type="checkbox" />
-                    <span>Rêve lucide</span>
-                  </label>
-                  <label className="space-x-2">
-                    <input type="checkbox" />
-                    <span>Rêve prémonitoire</span>
-                  </label>
-                  <label className="space-x-2">
-                    <input type="checkbox" />
-                    <span>Rêve parallèle</span>
-                  </label>
+                  {types.map((type) => (
+                    <label className="space-x-2" key={type.id}>
+                      <input type="checkbox" />
+                      <span>{type.name}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
               <div className="w-2/3 p-4">
@@ -79,55 +75,12 @@ function SearchZone() {
                   Thème
                 </span>
                 <div className="flex flex-wrap">
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
-                  <label className="space-x-2 w-1/2">
-                    <input type="checkbox" />
-                    <span>Argent</span>
-                  </label>
+                  {topics.map((type) => (
+                    <label className="space-x-2 w-1/2" key={type.id}>
+                      <input type="checkbox" />
+                      <span>{type.name}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
             </div>
@@ -135,7 +88,7 @@ function SearchZone() {
               <span role="button" className="text-violet underline">
                 Effacer les filtres
               </span>
-              <button className="rounded-full bg-violet text-white font-bold px-6 py-2 uppercase">
+              <button className="rounded-full bg-dark-violet hover:bg-light-violet text-white font-bold px-6 py-2 uppercase focus:outline-none">
                 Appliquer
               </button>
             </div>

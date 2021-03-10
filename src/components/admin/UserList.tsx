@@ -3,17 +3,9 @@ import { User } from "../../types/API/UserType";
 import UserItem from "./UserItem";
 import { faSpinner, faTimes, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { generateUser } from "../../mocks/User";
-
-const fakeUsers: Array<User> = [
-  generateUser(),
-  generateUser(),
-  generateUser(),
-  generateUser(),
-];
 
 export default function UserList() {
-  const [userList, setUserList] = useState<Array<User>>(fakeUsers); // initial state
+  const [userList, setUserList] = useState<Array<User>>([]); // initial state
   const [processingUsers, setProcessingUser] = useState<Array<User>>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [displayedUsers, setDisplayedUsers] = useState<Array<User>>([]);

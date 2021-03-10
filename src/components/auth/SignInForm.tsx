@@ -51,7 +51,7 @@ export default function SignInForm() {
   return (
     <form
       noValidate
-      className="p-4 space-y-6 w-full text-white"
+      className="p-4 space-y-6 w-full text-black"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col">

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { useLocation, useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
-import { generateUser } from "../mocks/User";
 import { User } from "../types/API/UserType";
 import Loader from "../components/Loader";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +21,7 @@ export default function ProfilePage({ editing }: Props) {
   useEffect(() => {
     //TODO: Fetch from api
     if (!user) {
-      setUser(generateUser());
+      setUser(undefined!);
     }
     console.log(user);
   }, [params, user]);

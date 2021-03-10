@@ -1,7 +1,7 @@
 import { BaseTable } from "./BaseType";
 import { User } from "./UserType";
 import { Topic } from "./TopicType";
-import { Type } from "./TypeType";
+import { ApiType } from "./TypeType";
 import { Comment } from "./CommentType";
 
 export type Dream = BaseTable<{
@@ -10,7 +10,7 @@ export type Dream = BaseTable<{
   isPublished: boolean;
   content: string;
   topic: Topic;
-  type: Type;
+  type: ApiType;
   title: string;
   comments: Array<Comment>;
 }>;
