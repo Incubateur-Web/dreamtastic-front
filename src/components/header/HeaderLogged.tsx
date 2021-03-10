@@ -33,9 +33,9 @@ export const HeaderLogged = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div ref={ref} className="relative">
-        <DropDownMenu show={isOpen} />
+        <div ref={ref} className="relative">
+          <DropDownMenu show={isOpen} />
+        </div>
       </div>
     </>
   );

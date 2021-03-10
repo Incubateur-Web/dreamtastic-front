@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <div className="w-full sticky top-0 flex z-50 bg-gray-300 text-gray-900">
-      <div className="w-2/3 md:w-3/4 flex my-auto">
+      <div className="w-2/3 flex my-auto">
         <Link to="/">
           <img
             src={logo}
@@ -36,7 +36,7 @@ export default function Header() {
           Utilisateurs
         </Link>
       </div>
-      <div className="py-4 w-1/3 md:w-1/4 my-auto flex justify-center header-connection text-white text-center">
+      <div className="py-4 w-1/3 my-auto flex justify-center header-connection text-white text-center">
         <div className="flex w-full justify-around">
           <div className="my-auto cursor-pointer border-b-2 border-main border-opacity-75">
             Soumettre un rêve
