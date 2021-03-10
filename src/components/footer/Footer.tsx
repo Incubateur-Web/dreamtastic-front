@@ -25,7 +25,7 @@ export default function Footer() {
           src={logoShort}
           alt="logoShort"
           width="50"
-          className="flex md:hidden md-1 md:mr-10"
+          className="flex md:hidden md-1 ml-1 md:mr-10"
         />
       </Link>
 

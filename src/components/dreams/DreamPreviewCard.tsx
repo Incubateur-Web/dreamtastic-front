@@ -1,10 +1,10 @@
 export const DreamPreviewCard = () => {
   return (
-    <div className="w-3/4 md:w-1/4 rounded-xl overflow-hidden relative bg-gray-300 flex-none md:flex-auto">
+    <div className="w-3/4 md:w-1/4 rounded-xl overflow-hidden relative bg-gray-300 flex-none md:flex-auto dream-card cursor-pointer">
       <img
         src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
         alt=""
-        className="object-cover w-full h-96"
+        className="object-cover w-full h-96 transform scale-100 transition duration-300"
       />
       <div className="absolute top-4 left-4 right-4 flex flex-wrap space-x-2">
         <Tag label="Jeux vidéo" />
@@ -33,7 +33,7 @@ type TagProps = { label: string };
 
 const Tag = ({ label }: TagProps) => {
   return (
-    <div className="text-sm text-white px-2 leading-none py-0.5 rounded-full font-bold border-white border-2">
+    <div className="text-sm text-white px-2 leading-none py-0.5 rounded-full font-bold border-white border-2 transition duration-200 hover:bg-white hover:bg-opacity-25 cursor-default">
       {label}
     </div>
   );
