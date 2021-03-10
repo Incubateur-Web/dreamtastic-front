@@ -1,12 +1,11 @@
 import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { Dream } from "../types/API/DreamType";
-import Loader from "../components/Loader";
-import { TopicWidget } from "../components/widgets/TopicWidget";
 import { useQuery } from "../hooks/useQuery";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
-import DreamCard from "../components/dreams/DreamCard";
+import { TopDreamsBanner } from "../components/TopDreamsBanner";
+import { WelcomeCard } from "../components/WelcomeCard";
+import { UserCard } from "../components/UserCard";
 
 export default function HomePage() {
   const { data, loading, error } = useQuery("/dreams", Axios.get);
@@ -23,19 +22,18 @@ export default function HomePage() {
 
   return (
     <DefaultLayout>
-      <div className="py-5 flex space-x-5">
-        <div className="space-y-4 w-full flex">
-          <TopicWidget />
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="flex flex-col w-2/4 px-4 my-0">
-              {data?.dreams.map((dream: Dream) => {
-                // return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
-                return <DreamCard key={dream.id} {...dream} />;
-              })}
-            </div>
-          )}
+      <TopDreamsBanner />
+      <WelcomeCard />
+
+      <div className="container mx-auto space-y-4">
+        <span className="text-violet text-lg font-medium">
+          LE TOP UTILISATEURS
+        </span>
+        <div className="flex space-x-4">
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
         </div>
       </div>
     </DefaultLayout>
