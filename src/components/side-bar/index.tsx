@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function LeftSideMenu() {
   return (
     <div className="flex sticky top-0 max-h-screen ml-4 p-4">

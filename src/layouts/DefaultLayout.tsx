@@ -4,9 +4,9 @@ import Footer from "../components/footer/Footer";
 
 export default function DefaultLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <div className="min-h-screen overflow-x-hidden py-10">
+    <div className="bg-layout-color bg-fixed bg-cover min-h-screen overflow-x-hidden">
       <Header />
-      <div>{children}</div>
+      <div className="py-16">{children}</div>
       <Footer />
     </div>
   );

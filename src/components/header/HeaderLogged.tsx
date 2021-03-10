@@ -1,5 +1,4 @@
 import {
-  faCaretDown,
   faCog,
   faSignOutAlt,
   faUserTie,

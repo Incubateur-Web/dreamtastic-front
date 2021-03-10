@@ -1,4 +1,3 @@
-import React from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import imageNotFound from "../../assets/images/notFound.svg";
 

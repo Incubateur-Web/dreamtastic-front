@@ -1,5 +1,3 @@
-import React from "react";
-
 export const WelcomeCard = () => (
   <div className="my-14 ">
     <div className="container mx-auto px-4 md:px-0">

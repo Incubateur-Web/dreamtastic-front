@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = { smiley: string };
 
 export default function ReactionItem({ smiley }: Props) {
