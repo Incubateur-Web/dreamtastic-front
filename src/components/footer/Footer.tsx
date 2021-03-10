@@ -17,20 +17,20 @@ export default function Footer() {
       <Link to="/" className="my-auto hover:underline mx-4">
         Politique de confidentialité
       </Link>
-      <Link
-        to="https://www.instagram.com/_dreamtastic_/"
+      <a
+        href="https://www.instagram.com/_dreamtastic_/"
         target="_blank"
         className="my-auto mx-3 hover:text-main transition duration-200"
       >
         <FontAwesomeIcon icon={faInstagram} size="2x" />
-      </Link>
-      <Link
-        to="https://twitter.com/_dreamtastic_"
+      </a>
+      <a
+        href="https://twitter.com/_dreamtastic_"
         target="_blank"
         className="my-auto mx-3 hover:text-main transition duration-200"
       >
         <FontAwesomeIcon icon={faTwitter} size="2x" />
-      </Link>
+      </a>
       <Link
         to="/"
         className="my-auto mx-3 hover:text-main transition duration-200"
