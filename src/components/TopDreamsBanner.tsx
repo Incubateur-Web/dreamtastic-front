@@ -11,7 +11,7 @@ const LUCIDE =
 export function TopDreamsBanner() {
   return (
     <div className="container mx-auto space-y-4">
-      <span className="text-violet text-lg font-medium">LE TOP RÊVES</span>
+      <span className="text-violet text-lg font-semibold">LE TOP RÊVES</span>
       <div className="flex space-x-4">
         <TopicCard imageUrl={MIGHTMARE} label="Le top cauchemar" link="/" />
         <TopicCard imageUrl={LUCIDE} label="Le top rêve lucide" link="/" />

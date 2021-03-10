@@ -9,7 +9,7 @@ export const UserCard = () => (
       className="object-cover w-full h-user-card"
     />
 
-    <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-white bg-opacity-70 px-5 py-3">
+    <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-white bg-opacity-80 px-5 py-3">
       <div className="relative h-full">
         <div className="flex flex-col justify-around">
           <span className="font-medium text-lg leading-7">Eva55</span>
