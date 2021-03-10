@@ -26,7 +26,7 @@ export default function HomePage() {
       <WelcomeCard />
 
       <div className="container mx-auto space-y-4">
-        <span className="text-violet text-lg font-medium">
+        <span className="text-violet text-lg font-bold">
           LE TOP UTILISATEURS
         </span>
         <div className="flex space-x-4">

@@ -5,7 +5,7 @@ export const WelcomeCard = () => (
     <div className="container mx-auto">
       <div className="mx-40 rounded-xl shadow-welcome-card pl-36 pr-10 flex items-center relative overflow-hidden">
         <div className="w-4/6 text-xl py-20 space-y-6">
-          <span className="text-title-cyan text-5xl font-semibold">
+          <span className="text-title-cyan text-5xl font-bold">
             Prêts à raconter tes rêves?
           </span>
           <div className="tracking-wide space-y-1">
@@ -18,7 +18,7 @@ export const WelcomeCard = () => (
               manifestations de ton imagination !
             </p>
           </div>
-          <button className="uppercase bg-violet text-white rounded-full px-8 py-2 font-medium focus:outline-none focus:ring-1">
+          <button className="uppercase bg-violet text-white rounded-full px-8 py-2 font-bold focus:outline-none focus:ring-1">
             Il faut que je te raconte ce rêve...
           </button>
         </div>

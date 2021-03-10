@@ -19,7 +19,7 @@ export const TopicCard = ({ imageUrl, label, link }: Props) => {
         />
         <div className="absolute bottom-4 left-4 flex space-x-3 items-center ">
           <OutlineStarIcon />
-          <span className="text-base font-medium">{label}</span>
+          <span className="text-base">{label}</span>
         </div>
       </Link>
     </div>

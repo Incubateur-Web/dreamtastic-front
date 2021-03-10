@@ -24,7 +24,7 @@ module.exports = {
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
-        "welcome-card": "0px 0px 28px -9px #4ca8b9",
+        "welcome-card": "0px 3px 26px #0FDEBC2F",
       },
       borderWidth: {
         3: "3px",
@@ -44,6 +44,7 @@ module.exports = {
 
       fontFamily: {
         pacifico: ["Pacifico", "sans-serif"],
+        nunito: ["Nunito Sans", "sans-serif"],
       },
       keyframes: {
         wiggle: {
