@@ -31,7 +31,7 @@ export default function DreamCard(dream: DreamCardProps) {
       title: "Signaler un rêve",
       input: "text",
       inputAttributes: {
-        required: true,
+        required: "true",
       },
       validationMessage: validationMessage,
       showCancelButton: true,

@@ -13,10 +13,10 @@ module.exports = {
         violet: "#7f13f6",
       },
       backgroundImage: {
-        "layout-color":
-          "linear-gradient(180deg, #3B5CD0 0%, rgba(89, 116, 215, 0.8) 100%)",
+        "layout-color": "white",
       },
       textColor: {
+        main: "#4ca8b9",
         "blue-night": "#2f4388",
         secondary: "#65676B",
         violet: "#7f13f6",
@@ -25,6 +25,9 @@ module.exports = {
       boxShadow: {
         header: "0 0 10px #4a4a4a",
         "welcome-card": "0px 3px 26px #0FDEBC2F",
+      },
+      borderColor: {
+        main: "#4ca8b9",
       },
       borderWidth: {
         3: "3px",
