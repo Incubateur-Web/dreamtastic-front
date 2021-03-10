@@ -10,15 +10,18 @@ module.exports = {
         "blue-night-light": "#3464C0",
       },
       backgroundImage: {
-        "layout-color":
-          "linear-gradient(180deg, #3B5CD0 0%, rgba(89, 116, 215, 0.8) 100%)",
+        "layout-color": "white",
       },
       textColor: {
+        main: "#4ca8b9",
         "blue-night": "#2f4388",
         secondary: "#65676B",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
+      },
+      borderColor: {
+        main: "#4ca8b9",
       },
       borderWidth: {
         3: "3px",

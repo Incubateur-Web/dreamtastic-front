@@ -25,26 +25,17 @@ export const HeaderLogged = () => {
   return (
     <>
       <div className="flex cursor-pointer">
-        <Link to="/profile/1234567">
+        <div onClick={() => setIsOpen((open) => !open)}>
           <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-2 pr-4 space-x-3">
             <div className="w-8 h-8 rounded-full bg-white bg-opacity-40" />
-            <div className="my-auto">
+            <div className="my-auto hidden lg:flex">
               <span>{user!.name}</span>
             </div>
           </div>
-        </Link>
-      </div>
-      <div ref={ref} className="relative">
-        <button
-          onClick={() => setIsOpen((open) => !open)}
-          className="h-10 w-10 rounded-full bg-white bg-opacity-20 flex justify-center items-center focus:outline-none focus:ring-1 focus:ring-white"
-        >
-          <div>
-            <FontAwesomeIcon icon={faCaretDown} />
-          </div>
-        </button>
-
-        <DropDownMenu show={isOpen} />
+        </div>
+        <div ref={ref} className="relative">
+          <DropDownMenu show={isOpen} />
+        </div>
       </div>
     </>
   );
@@ -64,6 +55,11 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
       <DropDownItem
         link="/admin"
         label="Administration"
+        icon={<FontAwesomeIcon icon={faUserTie} />}
+      />
+      <DropDownItem
+        link="/profile/1234567"
+        label="Profil"
         icon={<FontAwesomeIcon icon={faUserTie} />}
       />
       <DropDownItem
@@ -93,7 +89,7 @@ const DropDownItem = ({ label, icon, onClick, link }: DropDownItemProps) => {
   const { setIsOpen } = useContext(HeaderContext);
   const DefaultItem = () => (
     <div
-      className="py-1 align-middle px-2 flex space-x-2 hover:bg-white hover:bg-opacity-10 rounded"
+      className="py-1 align-middle px-2 flex space-x-2 hover:bg-white hover:bg-opacity-10 rounded cursor-pointer"
       onClick={(event) => {
         onClick && onClick(event);
         setIsOpen(false);

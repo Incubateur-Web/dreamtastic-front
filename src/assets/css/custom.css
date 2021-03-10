@@ -11,3 +11,12 @@
   border-top-color: white;
   border-bottom-color: white;
 }
+
+.header-connection {
+  background: linear-gradient(
+    90deg,
+    rgb(51 100 210) 0%,
+    rgb(108 26 230) 60%,
+    rgba(136, 0, 255, 1) 100%
+  );
+}
