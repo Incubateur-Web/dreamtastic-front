@@ -10,7 +10,7 @@ type Props = {
 
 export const TopicCard = ({ imageUrl, label, link }: Props) => {
   return (
-    <div className="relative w-1/3 bg-gray-300 text-white">
+    <div className="flex md:block relative w-3/5 md:w-1/3 bg-gray-300 text-white flex-none md:flex-auto">
       <Link to={link}>
         <img
           className="object-cover h-60 w-full rounded-2xl overflow-hidden"

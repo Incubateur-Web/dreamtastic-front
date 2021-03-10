@@ -10,9 +10,9 @@ const LUCIDE =
 
 export function TopDreamsBanner() {
   return (
-    <div className="container mx-auto space-y-4">
+    <div className="md:container md:mx-auto space-y-4 px-3 md:px-0 w-full flex flex-col overflow-visible">
       <span className="text-violet text-lg font-bold">LE TOP RÊVES</span>
-      <div className="flex space-x-4">
+      <div className="flex flex-nowrap space-x-4 overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
         <TopicCard imageUrl={MIGHTMARE} label="Le top cauchemar" link="/" />
         <TopicCard imageUrl={LUCIDE} label="Le top rêve lucide" link="/" />
         <TopicCard imageUrl={DREAM} label="Le top rêve" link="/" />
