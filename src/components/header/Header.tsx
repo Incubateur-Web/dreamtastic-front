@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { HeaderContextProvider } from "../../contexts/HeaderContext";
 import { UserContext } from "../../contexts/UserContext";
 import { HeaderLogged } from "./HeaderLogged";
-import { HeaderMenu } from "./HeaderMenu";
 import { HeaderSignIn } from "./HeaderSignIn";
 import logo from "../../assets/images/dreamtastic.png";
 import logoShort from "../../assets/images/logo_short.png";
@@ -12,7 +11,7 @@ export default function Header() {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="w-full sticky top-0 flex z-50 bg-gray-300 text-gray-900">
+    <div className="w-full sticky top-0 flex z-50 bg-gray-200 text-gray-900">
       <div className="w-2/3 flex my-auto">
         <Link to="/">
           <img
@@ -29,10 +28,16 @@ export default function Header() {
             className="flex md:hidden ml-2 mr-10"
           />
         </Link>
-        <Link to="/" className="my-auto mx-2 md:mx-6">
+        <Link
+          to="/"
+          className="my-auto mx-2 md:mx-6 hover:text-main transition duration-200"
+        >
           Rêves
         </Link>
-        <Link to="/" className="my-auto mx-2 md:mx-6">
+        <Link
+          to="/"
+          className="my-auto mx-2 md:mx-6 hover:text-main transition duration-200"
+        >
           Utilisateurs
         </Link>
       </div>
