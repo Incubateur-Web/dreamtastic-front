@@ -16,7 +16,7 @@ export const WelcomeCard = () => (
               manifestations de ton imagination !
             </p>
           </div>
-          <button className="uppercase bg-violet text-white rounded-full px-8 py-2 font-bold focus:outline-none mt-4">
+          <button className="uppercase bg-dark-violet hover:bg-light-violet transition duration-200 text-white rounded-full px-8 py-2 font-bold focus:outline-none mt-4">
             Il faut que je te raconte ce rêve...
           </button>
         </div>
