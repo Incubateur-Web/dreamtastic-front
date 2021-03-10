@@ -9,8 +9,10 @@ export default function HomePage() {
     <DefaultLayout>
       <TopDreamsBanner />
       <WelcomeCard />
-      <TopUsers />
-      <AllDreams />
+      <div className="space-y-20">
+        <TopUsers />
+        <AllDreams />
+      </div>
     </DefaultLayout>
   );
 }
@@ -18,7 +20,10 @@ export default function HomePage() {
 const AllDreams = () => {
   return (
     <div className="container mx-auto space-y-4 px-3 md:px-0">
-      <span className="text-violet text-lg font-bold">TOUS LES RÊVES </span>
+      <div className="flex space-x-2 items-center">
+        <span className="text-violet text-lg font-bold">TOUS LES RÊVES </span>
+        <span className="font-bold underline">voir tout</span>
+      </div>
       <div className="flex space-x-4 flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
         <DreamPreviewCard />
         <DreamPreviewCard />
