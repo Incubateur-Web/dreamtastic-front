@@ -1,5 +1,4 @@
 import Axios from "axios";
-import React from "react";
 import { useQuery } from "../../../hooks/useQuery";
 import CommentCard from "../../CommentCard";
 import { Comment } from "../../../types/API/CommentType";

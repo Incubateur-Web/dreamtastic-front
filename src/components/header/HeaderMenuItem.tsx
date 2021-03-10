@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 type Props = { icon: ReactNode; link: string; label?: string };

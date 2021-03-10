@@ -1,4 +1,3 @@
-import React from "react";
 import { DreamIcon } from "../icons/DreamIcon";
 import { NightmareIcon } from "../icons/NightmareIcon";
 import { PlusIcon } from "../icons/PlusIcon";

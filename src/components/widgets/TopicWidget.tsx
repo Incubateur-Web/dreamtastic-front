@@ -1,5 +1,4 @@
 import Axios from "axios";
-import React from "react";
 import { useQuery } from "../../hooks/useQuery";
 import { Topic } from "../../types/API/TopicType";
 import Loader from "../Loader";

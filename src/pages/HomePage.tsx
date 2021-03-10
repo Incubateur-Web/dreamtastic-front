@@ -1,43 +1,35 @@
-import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { Dream } from "../types/API/DreamType";
-import Loader from "../components/Loader";
-import { TopicWidget } from "../components/widgets/TopicWidget";
-import { useQuery } from "../hooks/useQuery";
-import Axios from "axios";
-import { Redirect } from "react-router-dom";
-import DreamCard from "../components/dreams/DreamCard";
+import { TopDreamsBanner } from "../components/TopDreamsBanner";
+import { WelcomeCard } from "../components/WelcomeCard";
+import { TopUsers } from "../components/TopUsers";
+import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 
 export default function HomePage() {
-  const { data, loading, error } = useQuery("/dreams", Axios.get);
-
-  if (error)
-    return (
-      <Redirect
-        to={{
-          pathname: "/error",
-          state: { code: 500, error: { message: "Failed to fetch dreams" } },
-        }}
-      />
-    );
-
   return (
     <DefaultLayout>
-      <div className="py-5 flex space-x-5">
-        <div className="space-y-4 w-full flex">
-          <TopicWidget />
-          {loading ? (
-            <Loader />
-          ) : (
-            <div className="flex flex-col w-2/4 px-4 my-0">
-              {data?.dreams.map((dream: Dream) => {
-                // return <div key={dream.id}>{JSON.stringify(dream)}</div>; //Add dreams when model is not broken
-                return <DreamCard key={dream.id} {...dream} />;
-              })}
-            </div>
-          )}
-        </div>
+      <TopDreamsBanner />
+      <WelcomeCard />
+      <div className="space-y-20">
+        <TopUsers />
+        <AllDreams />
       </div>
     </DefaultLayout>
   );
 }
+
+const AllDreams = () => {
+  return (
+    <div className="container mx-auto space-y-4 px-3 md:px-0">
+      <div className="flex space-x-2 items-center">
+        <span className="text-violet text-lg font-bold">TOUS LES RÊVES </span>
+        <span className="font-bold underline">voir tout</span>
+      </div>
+      <div className="flex space-x-4 flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+      </div>
+    </div>
+  );
+};

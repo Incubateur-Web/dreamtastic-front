@@ -1,4 +1,3 @@
-import React from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import UserList from "../components/admin/UserList";
 import DreamList from "../components/admin/DreamsList";

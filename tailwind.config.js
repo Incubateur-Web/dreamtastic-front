@@ -4,10 +4,13 @@ module.exports = {
       gradientColorStops: {
         "back-light": "#27427b",
         "back-dark": "#111838",
+        "welcome-top": "#5e6def",
+        "welcome-bot": "#7331ed",
       },
       backgroundColor: {
         "blue-night": "#2A4A89",
         "blue-night-light": "#3464C0",
+        violet: "#7f13f6",
       },
       backgroundImage: {
         "layout-color": "white",
@@ -16,15 +19,21 @@ module.exports = {
         main: "#4ca8b9",
         "blue-night": "#2f4388",
         secondary: "#65676B",
+        violet: "#7f13f6",
+        "title-cyan": "#4ca8b9",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
+        "welcome-card": "0px 3px 26px #0FDEBC2F",
       },
       borderColor: {
         main: "#4ca8b9",
       },
       borderWidth: {
         3: "3px",
+      },
+      height: {
+        "user-card": "27rem",
       },
       margin: {
         "3px": "3px",
@@ -35,8 +44,10 @@ module.exports = {
         4: "4",
         5: "5",
       },
+
       fontFamily: {
         pacifico: ["Pacifico", "sans-serif"],
+        nunito: ["Nunito Sans", "sans-serif"],
       },
       keyframes: {
         wiggle: {
@@ -52,5 +63,5 @@ module.exports = {
   variants: {
     animation: ["responsive", "motion-safe", "motion-reduce", "hover"],
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

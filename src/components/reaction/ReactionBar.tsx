@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import React from "react";
+import { forwardRef } from "react";
 import ReactionItem from "./ReactionItem";
 
 export type Props = { visible: boolean };
 
-const ReactionBar = React.forwardRef(({ visible }: Props, ref: any) => (
+const ReactionBar = forwardRef(({ visible }: Props, ref: any) => (
   <div
     ref={ref}
     className={clsx(

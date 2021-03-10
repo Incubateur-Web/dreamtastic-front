@@ -1,5 +1,4 @@
 import {
-  faCaretDown,
   faCog,
   faSignOutAlt,
   faUserTie,
@@ -44,7 +43,7 @@ export const HeaderLogged = () => {
 type DropdownMenuProps = { show: boolean };
 
 const DropDownMenu = ({ show }: DropdownMenuProps) => {
-  const { setUser, setTokens } = useContext(UserContext);
+  const { user, setUser, setTokens } = useContext(UserContext);
   return (
     <div
       className={clsx(
@@ -58,7 +57,7 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
         icon={<FontAwesomeIcon icon={faUserTie} />}
       />
       <DropDownItem
-        link="/profile/1234567"
+        link={"/profile/" + (user ? user.id : "")}
         label="Profil"
         icon={<FontAwesomeIcon icon={faUserTie} />}
       />

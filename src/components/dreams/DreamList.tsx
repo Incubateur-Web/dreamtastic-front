@@ -1,4 +1,3 @@
-import React from "react";
 import { Dream } from "../../types/API/DreamType";
 import DreamCard from "./DreamCard";
 
