@@ -7,7 +7,7 @@ import { TypeContext } from "../../contexts/TypeContext";
 import { TopicsContext } from "../../contexts/TopicsContext";
 
 export function SearchDreams() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   const { types } = useContext(TypeContext);
