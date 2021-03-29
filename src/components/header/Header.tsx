@@ -35,7 +35,7 @@ export default function Header() {
           Rêves
         </Link>
         <Link
-          to="/"
+          to="/users"
           className="my-auto mx-2 md:mx-6 hover:text-main transition duration-200"
         >
           Utilisateurs

@@ -13,6 +13,7 @@ const AuthPage = lazy(() => import("./pages/AuthPage"));
 const SignInForm = lazy(() => import("./components/auth/SignInForm"));
 const SignUpForm = lazy(() => import("./components/auth/SignUpForm"));
 const DreamsPage = lazy(() => import("./pages/DreamsPage"));
+const UsersPage = lazy(() => import("./pages/UsersPage"));
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/dream/:id" component={DreamPage} />
             <Route exact path="/dreams" component={DreamsPage} />
+            <Route exact path="/users" component={UsersPage} />
             <Route exact path="/admin" component={AdminPage} />
             <Route exact path="/profile/:id" component={ProfilePage} />
             <Route exact path="/profile/:id/edit">

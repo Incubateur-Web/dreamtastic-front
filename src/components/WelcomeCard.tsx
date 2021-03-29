@@ -1,7 +1,10 @@
+import { ShapesBackground } from "./background/ShapesBackground";
+
 export const WelcomeCard = () => (
-  <div className="my-14 ">
+  <div className="my-14 relative">
+    <ShapesBackground />
     <div className="container mx-auto px-4 md:px-0">
-      <div className="px-4 md:mx-40 rounded-xl shadow-welcome-card md:pl-36 md:pr-10 flex items-center relative overflow-hidden">
+      <div className="px-4 md:mx-40 bg-white rounded-xl shadow-welcome-card md:pl-36 md:pr-10 flex items-center relative overflow-hidden">
         <div className="w-full md:w-4/6 text-xl pt-20 pb-14 space-y-6">
           <span className="text-title-cyan text-3xl md:text-5xl font-bold">
             Prêts à raconter tes rêves?
