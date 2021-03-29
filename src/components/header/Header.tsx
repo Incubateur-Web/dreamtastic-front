@@ -42,7 +42,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="py-4 w-1/3 my-auto flex justify-center header-connection text-white text-center">
-        <div className="flex w-full justify-around">
+        <div className="flex w-full justify-around items-center">
           <Link to="/add-dream">
             <div className="my-auto border-b-2 border-main border-opacity-75">
               Soumettre un rêve
