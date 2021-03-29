@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { useClickAway } from "react-use";
 import { TypeContext } from "../contexts/TypeContext";
 import { TopicsContext } from "../contexts/TopicsContext";
+import { ShuffleIcon } from "../components/icons/ShuffleIcon";
 
 function Dreams() {
   return (
@@ -29,7 +30,7 @@ function SearchZone() {
   useClickAway(ref, () => setOpen(false));
 
   return (
-    <div className="relative  md:w-1/2 h-8 md:h-16">
+    <div className="relative w-full md:w-1/2 h-12">
       <div
         className="absolute top-0 left-0 right-0 shadow-search-bar rounded-2xl z-50 overflow-hidden"
         ref={ref}
@@ -102,8 +103,17 @@ function SearchZone() {
 export default function DreamsPage() {
   return (
     <DefaultLayout>
-      <div className="container mx-auto space-y-20 px-3 md:px-0">
-        <SearchZone />
+      <div className="container mx-auto space-y-11 md:space-y-20 px-3 md:px-0">
+        <div className="flex flex-col md:flex-row items-center w-full space-y-4 space-x-0 md:space-x-4 md:space-y-0">
+          <SearchZone />
+          <div
+            className="flex space-x-2 border-b-2 py-1 border-main"
+            role="button"
+          >
+            <ShuffleIcon fill="#6bdabe" />
+            <span>Surprenez-moi</span>
+          </div>
+        </div>
         <Dreams />
       </div>
     </DefaultLayout>

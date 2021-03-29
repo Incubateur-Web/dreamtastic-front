@@ -29,7 +29,7 @@ module.exports = {
         "search-bar": " -2px 1px 9px #00000026",
       },
       borderColor: {
-        main: "#4ca8b9",
+        main: "#6bdabe",
       },
       borderWidth: {
         3: "3px",
