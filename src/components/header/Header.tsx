@@ -43,9 +43,11 @@ export default function Header() {
       </div>
       <div className="py-4 w-1/3 my-auto flex justify-center header-connection text-white text-center">
         <div className="flex w-full justify-around">
-          <div className="my-auto cursor-pointer border-b-2 border-main border-opacity-75">
-            Soumettre un rêve
-          </div>
+          <Link to="/add-dream">
+            <div className="my-auto border-b-2 border-main border-opacity-75">
+              Soumettre un rêve
+            </div>
+          </Link>
           {user ? (
             <HeaderContextProvider>
               <HeaderLogged />
