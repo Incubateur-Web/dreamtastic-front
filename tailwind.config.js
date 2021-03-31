@@ -31,6 +31,7 @@ module.exports = {
         header: "0 0 10px #4a4a4a",
         "welcome-card": "0px 3px 26px #0FDEBC2F",
         "search-bar": " -2px 1px 9px #00000026",
+        "comment-card": "0px 2px 6px rgba(0,0,0,0.15)",
       },
       borderColor: {
         main: "#6bdabe",
