@@ -32,6 +32,8 @@ module.exports = {
       },
       borderColor: {
         main: "#6bdabe",
+        violet: "#a458f6",
+        "dark-violet": "#7c16f6",
       },
       borderWidth: {
         3: "3px",

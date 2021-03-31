@@ -6,8 +6,6 @@ import Loader from "../components/Loader";
 import axios from "axios";
 import UserMainInformations from "../components/user/UserMainInformations";
 import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/button/Button";
 
 type Props = {
@@ -69,7 +67,6 @@ export default function ProfilePage({ editing }: Props) {
     <DefaultLayout>
       <UserMainInformations profileUser={profileUser} />
       <div className="flex flex-wrap justify-around mx-2 md:mx-6 lg:mx-12 xl:mx-20 2xl:mx-24 mt-4">
-        <DreamPreviewCard />
         <DreamPreviewCard />
         <DreamPreviewCard />
         <DreamPreviewCard />
