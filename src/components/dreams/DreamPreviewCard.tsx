@@ -1,7 +1,7 @@
 export const DreamPreviewCard = () => {
   return (
-    <div className="w-3/4 md:w-1/4 p-2 flex-none dream-card cursor-pointer">
-      <div className="bg-gray-300 rounded-xl overflow-hidden relative">
+    <div className="w-3/4 md:w-1/4 p-2 flex-none cursor-pointer">
+      <div className="bg-gray-300 rounded-xl dream-card overflow-hidden relative">
         <img
           src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
           alt=""
