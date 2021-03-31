@@ -7,6 +7,7 @@ type Props = {
   uppercase?: boolean;
   link?: string;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 export default function Button(props: PropsWithChildren<Props>) {
@@ -26,7 +27,11 @@ export default function Button(props: PropsWithChildren<Props>) {
 
   if (props.icon) {
     return (
-      <button onClick={handleClick} className={classes}>
+      <button
+        disabled={props.disabled}
+        onClick={handleClick}
+        className={classes}
+      >
         {props.icon}{" "}
         <span className="hidden md:inline-block">{props.children}</span>
       </button>
@@ -34,7 +39,7 @@ export default function Button(props: PropsWithChildren<Props>) {
   }
 
   return (
-    <button onClick={handleClick} className={classes}>
+    <button disabled={props.disabled} onClick={handleClick} className={classes}>
       {props.children}
     </button>
   );
