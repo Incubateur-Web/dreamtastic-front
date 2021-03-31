@@ -9,7 +9,6 @@ const HomePage = lazy(() => import("./pages"));
 const DreamPage = lazy(() => import("./pages/dream"));
 const AdminPage = lazy(() => import("./pages/admin"));
 const ProfilePage = lazy(() => import("./pages/profile"));
-const AuthPage = lazy(() => import("./pages/auth"));
 const SignInForm = lazy(() => import("./components/auth/SignInForm"));
 const SignUpForm = lazy(() => import("./components/auth/SignUpForm"));
 const DreamsPage = lazy(() => import("./pages/dreams"));
@@ -30,14 +29,10 @@ export default function App() {
             <Route exact path="/admin" component={AdminPage} />
             <Route exact path="/profile/:id" component={ProfilePage} />
             <Route exact path="/auth/signin">
-              <AuthPage>
-                <SignInForm />
-              </AuthPage>
+              <SignInForm />
             </Route>
             <Route exact path="/auth/signup">
-              <AuthPage>
-                <SignUpForm />
-              </AuthPage>
+              <SignUpForm />
             </Route>
             <Route exact path="/error" component={ErrorPage} />
             <Route path="*">
