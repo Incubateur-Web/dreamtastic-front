@@ -8,7 +8,7 @@ export const ShapesBackground = () => {
         backgroundSize: "50%",
         backgroundPositionX: "-50px",
         backgroundPositionY: "-100px",
-        opacity: "10%",
+        opacity: "20%",
       }}
     />
   );

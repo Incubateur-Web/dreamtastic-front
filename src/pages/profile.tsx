@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { useLocation, useRouteMatch } from "react-router";
-import { Link } from "react-router-dom";
 import { User } from "../types/API/UserType";
 import Loader from "../components/Loader";
-import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import UserProfile from "../components/user/UserProfile";
-import EditUser from "../components/user/EditUser";
+import axios from "axios";
+import UserMainInformations from "../components/user/UserMainInformations";
+import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
+import Button from "../components/button/Button";
 
 type Props = {
   editing?: boolean;
@@ -16,17 +15,47 @@ type Props = {
 export default function ProfilePage({ editing }: Props) {
   const { params } = useRouteMatch<{ id: string }>();
   const { state } = useLocation();
-  const [user, setUser] = useState<User | undefined>(state as User);
+  const [profileUser, setProfileUser] = useState<User | undefined>(
+    state as User
+  );
+  const [error, setError] = useState(null);
+
+  const fetchUser = () => {
+    setError(null);
+    axios
+      .get(`/users/${params.id}`)
+      .then(({ data }) => {
+        console.log(data.user);
+        setProfileUser(data.user);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
 
   useEffect(() => {
-    //TODO: Fetch from api
-    if (!user) {
-      setUser(undefined!);
+    if (!profileUser) {
+      fetchUser();
     }
-    console.log(user);
-  }, [params, user]);
+  }, [params, profileUser]);
 
-  if (user === undefined) {
+  if (error) {
+    return (
+      <DefaultLayout>
+        <div className="flex flex-col text-center justify-center">
+          <div>Une erreur est survenue : {error}</div>
+          <div className="mt-2">
+            <Button onClick={fetchUser} uppercase extraClasses="px-4 py-1">
+              Réessayer
+            </Button>
+          </div>
+        </div>
+      </DefaultLayout>
+    );
+  }
+
+  if (profileUser === undefined) {
     return (
       <DefaultLayout>
         <Loader />
@@ -36,21 +65,14 @@ export default function ProfilePage({ editing }: Props) {
 
   return (
     <DefaultLayout>
-      <div className="bg-gray-100 rounded text-black w-full py-4 px-8">
-        <div className="text-2xl w-full border-b-1 border-gray-400 pb-2">
-          {user.firstName} {user.lastName}
-          {editing ? (
-            ""
-          ) : (
-            <Link to={{ pathname: `/profile/1564465/edit`, state: user }}>
-              <FontAwesomeIcon
-                className="ml-2 cursor-pointer"
-                icon={faUserEdit}
-              />
-            </Link>
-          )}
-        </div>
-        {editing ? <EditUser user={user} /> : <UserProfile user={user} />}
+      <UserMainInformations profileUser={profileUser} />
+      <div className="flex flex-wrap justify-around mx-2 md:mx-6 lg:mx-12 xl:mx-20 2xl:mx-24 mt-4">
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
+        <DreamPreviewCard />
       </div>
     </DefaultLayout>
   );

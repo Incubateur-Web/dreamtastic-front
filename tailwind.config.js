@@ -22,10 +22,11 @@ module.exports = {
         "blue-night": "#2f4388",
         secondary: "#65676B",
         violet: "#7f13f6",
+        "dark-violet": "#7c16f6",
         "title-cyan": "#4ca8b9",
+        "profile-cyan": "#1fa9a9",
         cyan: "#6bdabe",
         "light-violet": "#9527f6",
-        "dark-violet": "#7c16f6",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
@@ -35,6 +36,7 @@ module.exports = {
       },
       borderColor: {
         main: "#6bdabe",
+        violet: "#a458f6",
         "light-violet": "#9527f6",
         "dark-violet": "#7c16f6",
       },
@@ -46,6 +48,7 @@ module.exports = {
       },
       margin: {
         "3px": "3px",
+        profile: "30rem",
       },
       flex: {
         2: "2",
