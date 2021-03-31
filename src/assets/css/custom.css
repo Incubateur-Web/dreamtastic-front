@@ -10,8 +10,8 @@
 
 .loader {
   border: solid 4px transparent;
-  border-top-color: white;
-  border-bottom-color: white;
+  border-top-color: purple;
+  border-bottom-color: purple;
 }
 
 .header-connection {

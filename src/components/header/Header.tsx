@@ -29,23 +29,25 @@ export default function Header() {
           />
         </Link>
         <Link
-          to="/"
+          to="/dreams"
           className="my-auto mx-2 md:mx-6 hover:text-main transition duration-200"
         >
           Rêves
         </Link>
         <Link
-          to="/"
+          to="/users"
           className="my-auto mx-2 md:mx-6 hover:text-main transition duration-200"
         >
           Utilisateurs
         </Link>
       </div>
       <div className="py-4 w-1/3 my-auto flex justify-center header-connection text-white text-center">
-        <div className="flex w-full justify-around">
-          <div className="my-auto cursor-pointer border-b-2 border-main border-opacity-75">
-            Soumettre un rêve
-          </div>
+        <div className="flex w-full justify-around items-center">
+          <Link to="/add-dream">
+            <div className="my-auto border-b-2 border-main border-opacity-75">
+              Soumettre un rêve
+            </div>
+          </Link>
           {user ? (
             <HeaderContextProvider>
               <HeaderLogged />

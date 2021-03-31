@@ -25,7 +25,7 @@ export const HeaderLogged = () => {
     <>
       <div className="flex cursor-pointer">
         <div onClick={() => setIsOpen((open) => !open)}>
-          <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-2 pr-4 space-x-3">
+          <div className="flex rounded-full hover:bg-white hover:bg-opacity-10 py-1 pl-1 pr-4 space-x-3">
             <div className="w-8 h-8 rounded-full bg-white bg-opacity-40" />
             <div className="my-auto hidden lg:flex">
               <span>{user!.name}</span>

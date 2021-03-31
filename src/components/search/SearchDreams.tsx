@@ -1,26 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
-import DefaultLayout from "../layouts/DefaultLayout";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useRef, useState } from "react";
 import clsx from "clsx";
 import { useClickAway } from "react-use";
-import { TypeContext } from "../contexts/TypeContext";
-import { TopicsContext } from "../contexts/TopicsContext";
+import { TypeContext } from "../../contexts/TypeContext";
+import { TopicsContext } from "../../contexts/TopicsContext";
 
-function Dreams() {
-  return (
-    <div className="flex space-x-4 flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
-      <DreamPreviewCard />
-      <DreamPreviewCard />
-      <DreamPreviewCard />
-      <DreamPreviewCard />
-    </div>
-  );
-}
-
-function SearchZone() {
-  const [open, setOpen] = useState(true);
+export function SearchDreams() {
+  const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   const { types } = useContext(TypeContext);
@@ -29,7 +16,7 @@ function SearchZone() {
   useClickAway(ref, () => setOpen(false));
 
   return (
-    <div className="relative  md:w-1/2 h-8 md:h-16">
+    <div className="relative w-full md:w-1/2 h-12">
       <div
         className="absolute top-0 left-0 right-0 shadow-search-bar rounded-2xl z-50 overflow-hidden"
         ref={ref}
@@ -96,16 +83,5 @@ function SearchZone() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function DreamsPage() {
-  return (
-    <DefaultLayout>
-      <div className="container mx-auto space-y-20 px-3 md:px-0">
-        <SearchZone />
-        <Dreams />
-      </div>
-    </DefaultLayout>
   );
 }

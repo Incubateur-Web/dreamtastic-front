@@ -17,8 +17,7 @@ export const useQuery = (url: string, method: Function, opts?: Options) => {
         setData(fetchedData);
       })
       .catch((e: any) => {
-        console.log(e);
-
+        console.error(e);
         setError(e);
       })
       .finally(() => setLoading(false));

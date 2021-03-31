@@ -22,6 +22,7 @@ type UserType = {
 type UserContextType = {
   user?: UserType;
   setUser: Dispatch<SetStateAction<UserType>>;
+  isFetching: boolean;
   setTokens: React.Dispatch<React.SetStateAction<LocalStorageTokens>>;
 };
 
@@ -38,6 +39,7 @@ export const UserContext = createContext<UserContextType>(undefined!);
 
 export const UserContextProvider: FC = ({ children }) => {
   const [user, setUser] = useState<UserType>(undefined!);
+  const [isFetching, setIsFetching] = useState(true);
 
   const [tokens, setTokens] = useState<LocalStorageTokens>(() => {
     const tokens = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
@@ -62,6 +64,7 @@ export const UserContextProvider: FC = ({ children }) => {
   }, [tokens.refresh_token]);
 
   const fetchUser = useCallback(async () => {
+    setIsFetching(true);
     if (tokens.access_token) {
       try {
         const { data } = await axios.get<{ user: UserType }>("/users/info", {
@@ -73,6 +76,7 @@ export const UserContextProvider: FC = ({ children }) => {
         await getNewAccessToken();
       }
     }
+    setIsFetching(false);
   }, [tokens.access_token, getNewAccessToken]);
 
   useEffect(() => {
@@ -106,7 +110,7 @@ export const UserContextProvider: FC = ({ children }) => {
   }, [tokens, getNewAccessToken]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, setTokens }}>
+    <UserContext.Provider value={{ user, setUser, setTokens, isFetching }}>
       {children}
     </UserContext.Provider>
   );
