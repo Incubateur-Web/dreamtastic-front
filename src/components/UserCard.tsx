@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "./button/Button";
 
 export const UserCard = () => (
   <div className="w-3/4 md:w-1/4 px-2 pb-4 flex-none md:flex-auto">
@@ -21,9 +22,13 @@ export const UserCard = () => (
               Grande rêveuse depuis que je sais dormir.
             </p>
           </div>
-          <button className="absolute bottom-0 left-0 bg-dark-violet hover:bg-light-violet transition duration-200 rounded-full px-8 py-2 font-semibold text-sm focus:outline-none uppercase text-white">
-            <Link to="/">Voir le profil</Link>
-          </button>
+          <Button
+            link="/"
+            extraClasses="absolute bottom-0 left-0 px-8 py-2 font-semibold text-sm"
+            uppercase
+          >
+            Voir le profil
+          </Button>
         </div>
       </div>
     </div>

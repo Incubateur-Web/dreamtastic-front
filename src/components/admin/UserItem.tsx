@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { User } from "../../types/API/UserType";
+import { displayLocaleDate } from "../../utils/dates";
 
 type Props = {
   user: User;
@@ -16,7 +17,7 @@ export default function UserItem({ user, actions, processing }: Props) {
     >
       <td className="py-2 pl-2">{user.id}</td>
       <td className="py-2">{user.username}</td>
-      <td className="py-2">{user.lastConnection.toDateString()}</td>
+      <td className="py-2">{displayLocaleDate(user.lastConnection)}</td>
       <td className="py-2 pr-2">{actions}</td>
     </tr>
   );

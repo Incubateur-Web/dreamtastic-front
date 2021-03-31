@@ -29,9 +29,6 @@ export default function App() {
             <Route exact path="/users" component={UsersPage} />
             <Route exact path="/admin" component={AdminPage} />
             <Route exact path="/profile/:id" component={ProfilePage} />
-            <Route exact path="/profile/:id/edit">
-              <ProfilePage editing />
-            </Route>
             <Route exact path="/auth/signin">
               <AuthPage>
                 <SignInForm />
