@@ -1,14 +1,18 @@
 import clsx from "clsx";
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { PlusIcon } from "../icons/PlusIcon";
 
 type Option = { name: string; id: string; [key: string]: any };
 
-type Props = { options: Option[] };
+type Props = { options: Option[]; onChange: (keys: string[]) => void };
 
-export const CategoryPicker = ({ options }: Props) => {
+export const CategoryPicker = ({ options, onChange }: Props) => {
   const [pickedOptions, setPickedOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    onChange(pickedOptions);
+  }, [onChange, pickedOptions]);
 
   return (
     <div className="flex space-x-2 relative">

@@ -24,6 +24,8 @@ module.exports = {
         violet: "#7f13f6",
         "title-cyan": "#4ca8b9",
         cyan: "#6bdabe",
+        "light-violet": "#9527f6",
+        "dark-violet": "#7c16f6",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
@@ -32,6 +34,8 @@ module.exports = {
       },
       borderColor: {
         main: "#6bdabe",
+        "light-violet": "#9527f6",
+        "dark-violet": "#7c16f6",
       },
       borderWidth: {
         3: "3px",
