@@ -7,7 +7,8 @@ export const ShapesBackground = () => {
         backgroundRepeat: "repeat",
         backgroundSize: "50%",
         backgroundPositionX: "-50px",
-        backgroundPositionY: "-60px",
+        backgroundPositionY: "-100px",
+        opacity: "50%",
       }}
     />
   );
