@@ -10,7 +10,7 @@ export const AllDreams = () => {
           <span className="font-bold underline">voir tout</span>
         </Link>
       </div>
-      <div className="flex space-x-4 flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
+      <div className="flex flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
         <DreamPreviewCard />
         <DreamPreviewCard />
         <DreamPreviewCard />
