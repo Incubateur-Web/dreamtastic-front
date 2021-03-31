@@ -21,7 +21,9 @@ module.exports = {
         "blue-night": "#2f4388",
         secondary: "#65676B",
         violet: "#7f13f6",
+        "dark-violet": "#7c16f6",
         "title-cyan": "#4ca8b9",
+        "profile-cyan": "#1fa9a9",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
@@ -39,6 +41,7 @@ module.exports = {
       },
       margin: {
         "3px": "3px",
+        profile: "30rem",
       },
       flex: {
         2: "2",
