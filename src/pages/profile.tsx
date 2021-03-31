@@ -8,6 +8,7 @@ import UserMainInformations from "../components/user/UserMainInformations";
 import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import Button from "../components/button/Button";
 
 type Props = {
   editing?: boolean;
@@ -47,12 +48,9 @@ export default function ProfilePage({ editing }: Props) {
         <div className="flex flex-col text-center justify-center">
           <div>Une erreur est survenue : {error}</div>
           <div className="mt-2">
-            <button
-              onClick={fetchUser}
-              className="my-auto uppercase bg-dark-violet hover:bg-light-violet transition duration-200 text-white rounded-full px-4 py-1 focus:outline-none"
-            >
+            <Button onClick={fetchUser} uppercase extraClasses="px-4 py-1">
               Réessayer
-            </button>
+            </Button>
           </div>
         </div>
       </DefaultLayout>

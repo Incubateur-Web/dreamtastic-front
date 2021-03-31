@@ -6,6 +6,7 @@ type Props = {
   extraClasses?: string;
   uppercase?: boolean;
   link?: string;
+  onClick?: () => void;
 };
 
 export default function Button(props: PropsWithChildren<Props>) {
@@ -16,7 +17,9 @@ export default function Button(props: PropsWithChildren<Props>) {
   const history = useHistory();
 
   const handleClick = () => {
-    if (props.link) {
+    if (props.onClick !== undefined) {
+      props.onClick();
+    } else if (props.link) {
       history.push(props.link);
     }
   };
