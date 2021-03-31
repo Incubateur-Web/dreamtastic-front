@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { useLocation, useRouteMatch } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { User } from "../types/API/UserType";
 import Loader from "../components/Loader";
 import axios from "axios";
@@ -8,22 +8,18 @@ import UserMainInformations from "../components/user/UserMainInformations";
 import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 import Button from "../components/button/Button";
 
-type Props = {
-  editing?: boolean;
-};
-
-export default function ProfilePage({ editing }: Props) {
-  const { params } = useRouteMatch<{ id: string }>();
+export default function ProfilePage() {
+  const { id } = useParams<{ id: string }>();
   const { state } = useLocation();
   const [profileUser, setProfileUser] = useState<User | undefined>(
     state as User
   );
   const [error, setError] = useState(null);
 
-  const fetchUser = () => {
+  const fetchUser = useCallback(() => {
     setError(null);
     axios
-      .get(`/users/${params.id}`)
+      .get(`/users/${id}`)
       .then(({ data }) => {
         console.log(data.user);
         setProfileUser(data.user);
@@ -32,13 +28,13 @@ export default function ProfilePage({ editing }: Props) {
         console.error(error);
         setError(error.message);
       });
-  };
+  }, [id]);
 
   useEffect(() => {
     if (!profileUser) {
       fetchUser();
     }
-  }, [params, profileUser]);
+  }, [profileUser, fetchUser]);
 
   if (error) {
     return (
@@ -66,13 +62,15 @@ export default function ProfilePage({ editing }: Props) {
   return (
     <DefaultLayout>
       <UserMainInformations profileUser={profileUser} />
-      <div className="flex flex-wrap justify-around mx-2 md:mx-6 lg:mx-12 xl:mx-20 2xl:mx-24 mt-4">
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
+      <div className="container mx-auto space-y-4 px-3 md:px-0">
+        <div className="flex mt-12 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden pb-3 md:pb-0">
+          <DreamPreviewCard />
+          <DreamPreviewCard />
+          <DreamPreviewCard />
+          <DreamPreviewCard />
+          <DreamPreviewCard />
+          <DreamPreviewCard />
+        </div>
       </div>
     </DefaultLayout>
   );
