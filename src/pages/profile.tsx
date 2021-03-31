@@ -21,7 +21,6 @@ export default function ProfilePage() {
     axios
       .get(`/users/${id}`)
       .then(({ data }) => {
-        console.log(data.user);
         setProfileUser(data.user);
       })
       .catch((error) => {

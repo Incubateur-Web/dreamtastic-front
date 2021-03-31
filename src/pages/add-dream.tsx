@@ -13,9 +13,11 @@ export default function AddDreamPage() {
   const { topics } = useContext(TopicsContext);
 
   const handleTypeChange = (keys: string[]) => {
+    //TODO
     console.log(keys);
   };
   const handleTopicsChange = (keys: string[]) => {
+    //TODO
     console.log(keys);
   };
 
