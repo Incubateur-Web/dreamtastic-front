@@ -9,7 +9,7 @@ export default function DreamPage() {
       <div className="relative container mx-auto px-2 z-20">
         <div className="md:w-7/12 mx-auto">
           <div className="space-y-2">
-            <h1 className="text-6xl text-title-cyan font-semibold">
+            <h1 className="text-4xl md:text-6xl text-title-cyan font-semibold">
               Des ananas par milliers
             </h1>
             {/* Info */}
@@ -30,7 +30,7 @@ export default function DreamPage() {
               />
             </div>
 
-            <div className="text-justify py-4">
+            <div className="text-justify py-4 text-sm md:text-base">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
               provident eum nihil quod iure id tempore delectus mollitia. Atque
               quo minima voluptas facilis inventore aliquam qui numquam
@@ -63,7 +63,7 @@ export default function DreamPage() {
 
                 <span>Publié le 17 mars 2021 à 11:16</span>
               </div>
-              <div className="bg-white shadow-comment-card p-4 rounded-lg">
+              <div className="bg-white shadow-comment-card p-4 rounded-lg text-sm md:text-base">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
                 doloremque minima illo itaque ullam autem beatae distinctio
                 laboriosam cum optio excepturi ad rem, similique voluptatem?
@@ -84,7 +84,7 @@ export default function DreamPage() {
 
                 <span>Publié le 17 mars 2021 à 11:16</span>
               </div>
-              <div className="bg-white shadow-comment-card p-4 rounded-lg">
+              <div className="bg-white shadow-comment-card p-4 rounded-lg text-sm md:text-base">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
                 doloremque minima illo itaque ullam autem beatae distinctio
                 laboriosam cum optio excepturi ad rem, similique voluptatem?
