@@ -93,9 +93,6 @@ export default function SignInForm() {
           <div className="pt-4">
             <Button
               disabled={!formState.isValid}
-              onClick={() => {
-                console.log("tg");
-              }}
               extraClasses={clsx(
                 [
                   !formState.isValid
