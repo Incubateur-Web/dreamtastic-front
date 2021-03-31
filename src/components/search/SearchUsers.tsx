@@ -34,7 +34,7 @@ export const SearchUsers = () => {
             />
             <FontAwesomeIcon
               icon={faTimes}
-              size="lg"
+              size="sm"
               onClick={() => setSearchValue("")}
             />
           </div>

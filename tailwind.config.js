@@ -12,6 +12,7 @@ module.exports = {
         "blue-night-light": "#3464C0",
         "light-violet": "#9527f6",
         "dark-violet": "#7c16f6",
+        cyan: "#6bdabe",
       },
       backgroundImage: {
         "layout-color": "white",
@@ -22,6 +23,7 @@ module.exports = {
         secondary: "#65676B",
         violet: "#7f13f6",
         "title-cyan": "#4ca8b9",
+        cyan: "#6bdabe",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
