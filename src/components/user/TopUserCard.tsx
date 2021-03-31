@@ -1,4 +1,5 @@
 import { FlameIcon } from "../icons/FlameIcon";
+import Button from "../button/Button";
 
 export const TopUserCard = () => (
   <div className="w-full md:w-1/2 select-none flex-none md:flex-auto">
@@ -31,9 +32,9 @@ export const TopUserCard = () => (
             </div>
 
             <div>
-              <button className="text-white transition duration-200  bg-dark-violet hover:bg-light-violet rounded-full px-8 py-2 font-semibold text-sm focus:outline-none">
-                VOIR SON PROFIL
-              </button>
+              <Button extraClasses="px-8 py-2 font-semibold text-sm" uppercase>
+                Voir son profil
+              </Button>
             </div>
           </div>
           <div className="hidden md:block self-end float-right">

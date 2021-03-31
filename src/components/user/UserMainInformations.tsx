@@ -4,6 +4,7 @@ import { displayLocaleDate } from "../../utils/dates";
 import React, { useContext } from "react";
 import { User } from "../../types/API/UserType";
 import { UserContext } from "../../contexts/UserContext";
+import Button from "../button/Button";
 
 type Props = {
   profileUser: User;
@@ -24,10 +25,13 @@ export default function UserMainInformations({ profileUser }: Props) {
         </div>
         {isConnectedUserProfile() ? (
           <div className="flex">
-            <button className="my-auto uppercase bg-dark-violet hover:bg-light-violet transition duration-200 text-white rounded-full px-2 md:px-3 py-1 focus:outline-none">
-              <FontAwesomeIcon icon={faPen} />{" "}
-              <span className="hidden md:inline-block">Editer mon profil</span>
-            </button>
+            <Button
+              uppercase
+              icon={<FontAwesomeIcon icon={faPen} />}
+              extraClasses="my-auto px-2 md:px-3 py-1"
+            >
+              Editer mon profil
+            </Button>
           </div>
         ) : (
           ""
