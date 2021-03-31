@@ -12,6 +12,7 @@ module.exports = {
         "blue-night-light": "#3464C0",
         "light-violet": "#9527f6",
         "dark-violet": "#7c16f6",
+        cyan: "#6bdabe",
       },
       backgroundImage: {
         "layout-color": "white",
@@ -24,15 +25,19 @@ module.exports = {
         "dark-violet": "#7c16f6",
         "title-cyan": "#4ca8b9",
         "profile-cyan": "#1fa9a9",
+        cyan: "#6bdabe",
+        "light-violet": "#9527f6",
       },
       boxShadow: {
         header: "0 0 10px #4a4a4a",
         "welcome-card": "0px 3px 26px #0FDEBC2F",
         "search-bar": " -2px 1px 9px #00000026",
+        "comment-card": "0px 2px 6px rgba(0,0,0,0.15)",
       },
       borderColor: {
         main: "#6bdabe",
         violet: "#a458f6",
+        "light-violet": "#9527f6",
         "dark-violet": "#7c16f6",
       },
       borderWidth: {
