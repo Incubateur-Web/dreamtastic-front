@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { displayLocaleDate } from "../../utils/dates";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 type Props = {
   profileUser: User;
@@ -28,7 +28,11 @@ export default function EditUserInformations(props: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex">
-        <div className="w-16 h-16 rounded-full bg-gray-600 bg-opacity-40" />
+        <div className="relative w-16 h-16 rounded-full bg-gray-600 bg-opacity-40">
+          <div className="absolute rounded-full bg-white shadow-lg bottom-0 -left-2 px-2 py-1 cursor-pointer transition duration-150 hover:bg-gray-200">
+            <FontAwesomeIcon icon={faPen} />
+          </div>
+        </div>
         <div className="flex ml-2 mr-4">
           <div className="my-auto font-bold text-4xl">
             <input
