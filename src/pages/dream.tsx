@@ -42,6 +42,8 @@ export default function DreamPage() {
   const dream = data.dream;
   const createdAt = new Date(dream.createdAt);
 
+  console.log(dream);
+
   return (
     <DefaultLayout>
       <div className="relative container mx-auto px-2 z-20">
@@ -68,12 +70,25 @@ export default function DreamPage() {
                 {format(createdAt, TIME_FORMAT, { locale: fr })}
               </span>
             </div>
-            <div>
+            <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1527487253850-19ea84ee398e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
                 alt=""
                 className="h-32 md:h-72 w-full object-cover object-bottom"
               />
+              <div className="absolute top-2 left-2">
+                <div className="space-x-2">
+                  {topics
+                    .filter((topic) => dream.topics.includes(topic.id))
+                    .map((top) => {
+                      return (
+                        <div className="rounded-full text-xs leading-none border-2 px-2 py-0.5 font-semibold uppercase border-black backdrop-blur-2">
+                          {top.name}
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
             </div>
 
             <div className="text-justify py-4 text-sm md:text-base">

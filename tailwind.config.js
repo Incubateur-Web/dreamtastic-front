@@ -1,4 +1,8 @@
 module.exports = {
+  purge: {
+    enabled: true,
+    content: ["./src/**/*.html", "./src/**/*.tsx"],
+  },
   theme: {
     extend: {
       gradientColorStops: {
@@ -70,10 +74,15 @@ module.exports = {
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
       },
+      backdropFilter: {
+        // defaults to {}
+        none: "none",
+        "blur-2": "blur(2px)",
+      },
     },
   },
   variants: {
     animation: ["responsive", "motion-safe", "motion-reduce", "hover"],
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [require("@tailwindcss/line-clamp"), require("tailwindcss-filters")],
 };
