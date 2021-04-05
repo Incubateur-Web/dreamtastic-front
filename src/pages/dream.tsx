@@ -76,8 +76,8 @@ export default function DreamPage() {
                 alt=""
                 className="h-32 md:h-72 w-full object-cover object-bottom"
               />
-              <div className="absolute top-2 left-2">
-                <div className="space-x-2">
+              <div className="absolute top-2 left-2 right-2">
+                <div className="space-x-2 flex flex-wrap">
                   {topics
                     .filter((topic) => dream.topics.includes(topic.id))
                     .map((top) => {
