@@ -3,14 +3,24 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import { ShuffleIcon } from "../components/icons/ShuffleIcon";
 import { SearchDreams } from "../components/search/SearchDreams";
 import { TopBg } from "../components/background/TopBg";
+import { useQuery } from "../hooks/useQuery";
+import axios from "axios";
+import { Dream } from "../types/API/DreamType";
 
-function Dreams() {
+export function DreamsList() {
+  const { data, loading, error } = useQuery<{ dreams: Dream[] }>(
+    "/dreams?limit=20&offset=0",
+    axios.get
+  );
+  if (error) return <DefaultLayout>{error}</DefaultLayout>;
+  if (loading) return <DefaultLayout></DefaultLayout>;
+  if (!data) return <DefaultLayout>Failed</DefaultLayout>;
+
   return (
-    <div className="flex flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
-      <DreamPreviewCard />
-      <DreamPreviewCard />
-      <DreamPreviewCard />
-      <DreamPreviewCard />
+    <div className="flex flex-wrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
+      {data.dreams.map((dream) => (
+        <DreamPreviewCard key={dream.id} {...dream} />
+      ))}
     </div>
   );
 }
@@ -30,7 +40,7 @@ export default function DreamsPage() {
             <span>Surprenez-moi</span>
           </div>
         </div>
-        <Dreams />
+        <DreamsList />
       </div>
     </DefaultLayout>
   );

@@ -33,7 +33,6 @@ export default function DreamList() {
         return (
           dream.id.includes(searchValue) ||
           dream.title.includes(searchValue) ||
-          dream.topic.name.includes(searchValue) ||
           dream.author.firstName.includes(searchValue) ||
           dream.author.username.includes(searchValue) ||
           dream.author.lastName.includes(searchValue)

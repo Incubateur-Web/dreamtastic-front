@@ -13,6 +13,7 @@ import { DATE_FORMAT, TIME_FORMAT } from "../utils/date-utils";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import axios from "axios";
+import { Dream } from "../types/API/DreamType";
 
 export default function DreamPage() {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,10 @@ export default function DreamPage() {
   const { topics } = useContext(TopicsContext);
   const { types } = useContext(TypeContext);
 
-  const { data, error, loading } = useQuery(`/dreams/${id}`, Axios.get);
+  const { data, error, loading } = useQuery<{ dream: Dream }>(
+    `/dreams/${id}`,
+    Axios.get
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,11 +42,9 @@ export default function DreamPage() {
 
   if (error) return <DefaultLayout>{error}</DefaultLayout>;
   if (loading) return <DefaultLayout></DefaultLayout>;
-
+  if (!data) return <DefaultLayout>No datas</DefaultLayout>;
   const dream = data.dream;
   const createdAt = new Date(dream.createdAt);
-
-  console.log(dream);
 
   return (
     <DefaultLayout>
@@ -64,7 +66,7 @@ export default function DreamPage() {
                   types.find((type) => {
                     return type.id === dream.type;
                   })?.name
-                }
+                }{" "}
                 &bull; Publié le{" "}
                 {format(createdAt, DATE_FORMAT, { locale: fr })} à{" "}
                 {format(createdAt, TIME_FORMAT, { locale: fr })}
@@ -82,7 +84,10 @@ export default function DreamPage() {
                     .filter((topic) => dream.topics.includes(topic.id))
                     .map((top) => {
                       return (
-                        <div className="rounded-full text-xs leading-none border-2 px-2 py-0.5 font-semibold uppercase border-black backdrop-blur-2">
+                        <div
+                          key={top.id}
+                          className="rounded-full text-xs leading-none border-2 px-2 py-0.5 font-semibold uppercase border-black backdrop-blur-2"
+                        >
                           {top.name}
                         </div>
                       );

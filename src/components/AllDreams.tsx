@@ -1,5 +1,5 @@
-import { DreamPreviewCard } from "./dreams/DreamPreviewCard";
 import { Link } from "react-router-dom";
+import { DreamsList } from "../pages/dreams";
 
 export const AllDreams = () => {
   return (
@@ -10,12 +10,7 @@ export const AllDreams = () => {
           <span className="font-bold underline">voir tout</span>
         </Link>
       </div>
-      <div className="flex flex-nowrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-        <DreamPreviewCard />
-      </div>
+      <DreamsList />
     </div>
   );
 };

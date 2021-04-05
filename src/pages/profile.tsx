@@ -63,12 +63,12 @@ export default function ProfilePage() {
       <UserMainInformations profileUser={profileUser} />
       <div className="container mx-auto space-y-4 px-3 md:px-0">
         <div className="flex mt-12 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden pb-3 md:pb-0">
+          {/* <DreamPreviewCard />
           <DreamPreviewCard />
           <DreamPreviewCard />
           <DreamPreviewCard />
           <DreamPreviewCard />
-          <DreamPreviewCard />
-          <DreamPreviewCard />
+          <DreamPreviewCard /> */}
         </div>
       </div>
     </DefaultLayout>

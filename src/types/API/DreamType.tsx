@@ -1,16 +1,14 @@
 import { BaseTable } from "./BaseType";
 import { User } from "./UserType";
-import { Topic } from "./TopicType";
-import { ApiType } from "./TypeType";
 import { Comment } from "./CommentType";
 
 export type Dream = BaseTable<{
   author: User;
-  isAnonymous: boolean;
+  anonym: boolean;
   isPublished: boolean;
   content: string;
-  topic: Topic;
-  type: ApiType;
+  topics: string[];
+  type: string;
   title: string;
   comments: Array<Comment>;
 }>;

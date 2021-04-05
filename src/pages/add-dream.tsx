@@ -1,25 +1,44 @@
+import axios from "axios";
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import { TopBg } from "../components/background/TopBg";
 import { CategoryPicker } from "../components/category-picker";
 import { PlusIcon } from "../components/icons/PlusIcon";
 import { TopicsContext } from "../contexts/TopicsContext";
 import { TypeContext } from "../contexts/TypeContext";
+import { UserContext } from "../contexts/UserContext";
 import { useRequireUser } from "../hooks/useRequireUser";
 import DefaultLayout from "../layouts/DefaultLayout";
 
 export default function AddDreamPage() {
   useRequireUser();
+
+  const { register, handleSubmit, setValue } = useForm({
+    shouldUnregister: false,
+  });
+
   const { types } = useContext(TypeContext);
   const { topics } = useContext(TopicsContext);
+  const { user } = useContext(UserContext);
+  const { push } = useHistory();
 
   const handleTypeChange = (keys: string[]) => {
-    //TODO
-    console.log(keys);
+    setValue("type", keys[0]);
   };
   const handleTopicsChange = (keys: string[]) => {
-    //TODO
-    console.log(keys);
+    setValue("topics", keys);
   };
+
+  const handleFormSubmit = handleSubmit(async (values) => {
+    const { data } = await axios.post("/dreams", {
+      ...values,
+      author: user?.id,
+    });
+
+    console.log(data);
+    push(`/dream/${data.id}`);
+  });
 
   return (
     <DefaultLayout>
@@ -35,26 +54,33 @@ export default function AddDreamPage() {
               précis mettra en avant ton récit !
             </span>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-8">
+          <form onSubmit={handleFormSubmit} className="space-y-8">
             <div className="flex flex-col md:w-2/3">
-              <label htmlFor="">Titre de ton rêve</label>
+              <label htmlFor="title">Titre de ton rêve</label>
               <input
                 type="text"
+                ref={register}
+                name="title"
+                id="title"
                 className="border-b border-gray-400 focus:outline-none py-1"
                 placeholder="Ex: des ananas par milliers"
               />
             </div>
 
             <div className="flex flex-col md:w-2/3">
-              <label htmlFor="">Titre de ton rêve</label>
+              <label htmlFor="content">Description</label>
               <textarea
+                rows={4}
                 className="border border-gray-400 focus:outline-none p-2"
                 placeholder="Ex: au milieu d'une jungle..."
+                ref={register}
+                name="content"
+                id="content"
               />
             </div>
             <div className="flex flex-col md:w-2/3">
-              <span>Photo</span>
-              <div className="border-dark-violet border w-52 h-24 ">
+              <label htmlFor="photo">Photo</label>
+              <div className="border-dark-violet border w-52 h-24">
                 <label
                   role="button"
                   htmlFor="photo"
@@ -71,7 +97,11 @@ export default function AddDreamPage() {
 
             <div className="flex flex-col md:w-2/3 space-y-2">
               <label htmlFor="">Type du rêve</label>
-              <CategoryPicker options={types} onChange={handleTypeChange} />
+              <CategoryPicker
+                options={types}
+                onChange={handleTypeChange}
+                limit={1}
+              />
             </div>
 
             <div className="flex flex-col md:w-2/3 space-y-2">
@@ -80,7 +110,7 @@ export default function AddDreamPage() {
             </div>
 
             <div className="flex md:w-2/3 items-center space-x-2">
-              <input type="checkbox" name="anonym" id="anonym" />
+              <input type="checkbox" name="anonym" id="anonym" ref={register} />
               <label htmlFor="anonym" className="leading-none select-none">
                 Poster en anonyme
               </label>
