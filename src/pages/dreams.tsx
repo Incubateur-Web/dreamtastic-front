@@ -17,7 +17,7 @@ export function DreamsList() {
   if (!data) return <DefaultLayout>Failed</DefaultLayout>;
 
   return (
-    <div className="flex flex-wrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0">
+    <div className="flex flex-wrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0 -mx-2">
       {data.dreams.map((dream) => (
         <DreamPreviewCard key={dream.id} {...dream} />
       ))}

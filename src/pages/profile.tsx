@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { useLocation, useParams } from "react-router";
 import { User } from "../types/API/UserType";
 import Loader from "../components/Loader";
 import axios from "axios";
 import UserMainInformations from "../components/user/UserMainInformations";
-import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 import Button from "../components/button/Button";
+import { DreamsList } from "./dreams";
 
 export default function ProfilePage() {
   const { id } = useParams<{ id: string }>();
@@ -62,14 +62,7 @@ export default function ProfilePage() {
     <DefaultLayout>
       <UserMainInformations profileUser={profileUser} />
       <div className="container mx-auto space-y-4 px-3 md:px-0">
-        <div className="flex mt-12 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden pb-3 md:pb-0">
-          {/* <DreamPreviewCard />
-          <DreamPreviewCard />
-          <DreamPreviewCard />
-          <DreamPreviewCard />
-          <DreamPreviewCard />
-          <DreamPreviewCard /> */}
-        </div>
+        <DreamsList />
       </div>
     </DefaultLayout>
   );
