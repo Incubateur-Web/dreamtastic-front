@@ -13,6 +13,7 @@ import { DATE_FORMAT, TIME_FORMAT } from "../utils/date-utils";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import axios from "axios";
+import { Dream } from "../types/API/DreamType";
 
 export default function DreamPage() {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,10 @@ export default function DreamPage() {
   const { topics } = useContext(TopicsContext);
   const { types } = useContext(TypeContext);
 
-  const { data, error, loading } = useQuery(`/dreams/${id}`, Axios.get);
+  const { data, error, loading } = useQuery<{ dream: Dream }>(
+    `/dreams/${id}`,
+    Axios.get
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,7 +42,7 @@ export default function DreamPage() {
 
   if (error) return <DefaultLayout>{error}</DefaultLayout>;
   if (loading) return <DefaultLayout></DefaultLayout>;
-
+  if (!data) return <DefaultLayout>No datas</DefaultLayout>;
   const dream = data.dream;
   const createdAt = new Date(dream.createdAt);
 
@@ -62,18 +66,34 @@ export default function DreamPage() {
                   types.find((type) => {
                     return type.id === dream.type;
                   })?.name
-                }
+                }{" "}
                 &bull; Publié le{" "}
                 {format(createdAt, DATE_FORMAT, { locale: fr })} à{" "}
                 {format(createdAt, TIME_FORMAT, { locale: fr })}
               </span>
             </div>
-            <div>
+            <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1527487253850-19ea84ee398e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
                 alt=""
                 className="h-32 md:h-72 w-full object-cover object-bottom"
               />
+              <div className="absolute top-2 left-2 right-2">
+                <div className="space-x-2 flex flex-wrap">
+                  {topics
+                    .filter((topic) => dream.topics.includes(topic.id))
+                    .map((top) => {
+                      return (
+                        <div
+                          key={top.id}
+                          className="rounded-full text-xs leading-none border-2 px-2 py-0.5 font-semibold uppercase border-black backdrop-blur-2"
+                        >
+                          {top.name}
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
             </div>
 
             <div className="text-justify py-4 text-sm md:text-base">
