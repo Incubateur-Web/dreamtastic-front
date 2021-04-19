@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { User } from "../../types/API/UserType";
 import { UserContext } from "../../contexts/UserContext";
 import ViewUserMainInformations from "./ViewUserMainInformations";
@@ -6,9 +6,13 @@ import EditUserInformations from "./EditUserInformations";
 
 type Props = {
   profileUser: User;
+  onRefetch: () => void;
 };
 
-export default function UserMainInformations({ profileUser }: Props) {
+export default function UserMainInformations({
+  profileUser,
+  onRefetch,
+}: Props) {
   const { user } = useContext(UserContext);
   const [editing, setEditing] = useState(false);
 
@@ -22,6 +26,7 @@ export default function UserMainInformations({ profileUser }: Props) {
         <EditUserInformations
           profileUser={profileUser}
           onSubmit={() => {
+            onRefetch();
             setEditing(false);
           }}
         />

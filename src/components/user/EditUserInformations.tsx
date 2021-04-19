@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { displayLocaleDate } from "../../utils/dates";
 import React, { FormEvent, useState } from "react";
+import axios from "axios";
 
 type Props = {
   profileUser: User;
@@ -13,15 +14,19 @@ type Props = {
 export default function EditUserInformations(props: Props) {
   const [name, setName] = useState(props.profileUser.name);
   const [description, setDescription] = useState(
-    props.profileUser.description
-      ? props.profileUser.description
-      : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    props.profileUser.description ? props.profileUser.description : ""
   );
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // TODO : query in DB
-    console.log(name, description);
+  const handleSubmit = async (e: FormEvent) => {
+    try {
+      e.preventDefault();
+      await axios.patch(`/users/${props.profileUser.id}`, {
+        name,
+        description,
+      });
+    } catch (error) {
+      console.error(error);
+    }
     props.onSubmit();
   };
 
@@ -63,6 +68,7 @@ export default function EditUserInformations(props: Props) {
         <textarea
           rows={3}
           defaultValue={description}
+          placeholder="Description"
           onChange={(e) => {
             setDescription(e.currentTarget.value);
           }}

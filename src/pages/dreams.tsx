@@ -7,9 +7,19 @@ import { useQuery } from "../hooks/useQuery";
 import axios from "axios";
 import { Dream } from "../types/API/DreamType";
 
-export function DreamsList() {
+type DreamListProps = {
+  query?: { [k: string]: string };
+};
+
+export function DreamsList({ query = {} }: DreamListProps) {
+  const url = new URL(window.location.origin + "/dreams?limit=20&offset=0");
+
+  Object.entries(query).forEach(([key, value]) => {
+    url.searchParams.append(key, value);
+  });
+
   const { data, loading, error } = useQuery<{ dreams: Dream[] }>(
-    "/dreams?limit=20&offset=0",
+    url.toString(),
     axios.get
   );
   if (error) return <DefaultLayout>{error}</DefaultLayout>;
