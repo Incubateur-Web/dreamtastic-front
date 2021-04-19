@@ -60,8 +60,11 @@ export default function ProfilePage() {
 
   return (
     <DefaultLayout>
-      <UserMainInformations profileUser={profileUser} />
-      <div className="container mx-auto space-y-4 px-3 md:px-0">
+      <UserMainInformations
+        profileUser={profileUser}
+        onRefetch={() => fetchUser()}
+      />
+      <div className="container mx-auto space-y-4 px-3 md:px-0 mt-8">
         <DreamsList query={{ author: id }} />
       </div>
     </DefaultLayout>
