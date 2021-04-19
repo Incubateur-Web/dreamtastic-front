@@ -62,7 +62,7 @@ export default function ProfilePage() {
     <DefaultLayout>
       <UserMainInformations profileUser={profileUser} />
       <div className="container mx-auto space-y-4 px-3 md:px-0">
-        <DreamsList />
+        <DreamsList query={{ author: id }} />
       </div>
     </DefaultLayout>
   );
