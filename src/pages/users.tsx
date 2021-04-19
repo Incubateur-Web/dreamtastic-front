@@ -6,10 +6,15 @@ import { UserCard } from "../components/UserCard";
 import axios from "axios";
 import { useQuery } from "../hooks/useQuery";
 import { User } from "../types/API/UserType";
+import { useEffect, useState } from "react";
 
 export default function UsersPage() {
   const { data } = useQuery<{ users: User[] }>(`/users`, axios.get);
-  console.log(data);
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    data && setUsers(data.users);
+  }, [data]);
 
   return (
     <DefaultLayout>
@@ -17,7 +22,7 @@ export default function UsersPage() {
 
       <div className="container mx-auto space-y-11 md:space-y-20 px-3 md:px-0 z-10">
         <div className="flex flex-col md:flex-row items-center w-full space-y-4 space-x-0 md:space-x-4 md:space-y-0">
-          <SearchUsers />
+          <SearchUsers onChange={setUsers} />
         </div>
 
         <div className="-mx-4 px-4 flex space-x-4 z-50 flex-nowrap overflow-x-auto md:overflow-hidden py-3">
@@ -27,8 +32,8 @@ export default function UsersPage() {
 
         <div className="container mx-auto space-y-4 px-3 md:px-0">
           <div className="-mx-2 flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden pb-3 md:pb-0">
-            {data?.users.map((usr) => (
-              <UserCard {...usr} />
+            {users.map((usr) => (
+              <UserCard {...usr} key={usr.id} />
             ))}
           </div>
         </div>
