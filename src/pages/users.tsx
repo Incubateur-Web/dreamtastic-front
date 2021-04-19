@@ -3,8 +3,14 @@ import { TopUserCard } from "../components/user/TopUserCard";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { TopBg } from "../components/background/TopBg";
 import { UserCard } from "../components/UserCard";
+import axios from "axios";
+import { useQuery } from "../hooks/useQuery";
+import { User } from "../types/API/UserType";
 
 export default function UsersPage() {
+  const { data } = useQuery<{ users: User[] }>(`/users`, axios.get);
+  console.log(data);
+
   return (
     <DefaultLayout>
       <TopBg />
@@ -21,13 +27,9 @@ export default function UsersPage() {
 
         <div className="container mx-auto space-y-4 px-3 md:px-0">
           <div className="-mx-2 flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-hidden pb-3 md:pb-0">
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
-            <UserCard />
+            {data?.users.map((usr) => (
+              <UserCard {...usr} />
+            ))}
           </div>
         </div>
       </div>
