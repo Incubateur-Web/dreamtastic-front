@@ -60,7 +60,9 @@ module.exports = {
         4: "4",
         5: "5",
       },
-
+      minWidth: {
+        15: "15rem",
+      },
       fontFamily: {
         pacifico: ["Pacifico", "sans-serif"],
         nunito: ["Nunito Sans", "sans-serif"],
