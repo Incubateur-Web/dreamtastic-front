@@ -5,7 +5,6 @@ type Props = { code: number; error: Error };
 
 export default function ErrorPage() {
   const { state } = useLocation<Props>();
-  console.log(state);
 
   return (
     <DefaultLayout>

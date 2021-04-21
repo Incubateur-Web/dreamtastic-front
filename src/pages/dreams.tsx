@@ -54,9 +54,6 @@ export default function DreamsPage() {
         ? (newState.type = values["type-dream"])
         : delete newState.type;
 
-      console.log(values);
-      console.log(newState);
-
       return { ...newState };
     });
   };

@@ -42,7 +42,6 @@ export default function DreamCard(dream: DreamCardProps) {
           MySwal.showValidationMessage(validationMessage);
         } else {
           //TODO : fetch API
-          console.log(`reporting dream ${dream.id} for ${reason}`);
           return true;
         }
       },
@@ -50,7 +49,6 @@ export default function DreamCard(dream: DreamCardProps) {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          console.log(`dream ${dream.id} reported !`);
           MySwal.fire({
             title: "Signalement effectué",
             icon: "success",
