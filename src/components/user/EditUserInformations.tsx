@@ -56,7 +56,7 @@ export default function EditUserInformations(props: Props) {
             icon={<FontAwesomeIcon icon={faPen} />}
             extraClasses="my-auto px-2 md:px-3 py-1"
           >
-            Enregistrer les modifications
+            Enregistrer
           </Button>
         </div>
       </div>

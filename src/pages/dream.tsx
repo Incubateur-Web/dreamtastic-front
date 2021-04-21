@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { TopicsContext } from "../contexts/TopicsContext";
 import { TypeContext } from "../contexts/TypeContext";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import CommentList from "../components/dreams/comments/CommentList";
 import { NewCommentForm } from "../components/dreams/comments/NewCommentForm";
@@ -56,10 +57,20 @@ export default function DreamPage() {
             </h1>
             {/* Info */}
             <div className="flex justify-between items-center text-sm">
-              <div className="flex justify-between items-center space-x-3">
-                <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
-                <div className="">{authorName}</div>
-              </div>
+              {data.dream.anonym ? (
+                <div className="flex justify-between items-center space-x-3">
+                  <div className="w-6 h-6 bg-gray-400 rounded-full" />
+                  <div className="">{authorName}</div>
+                </div>
+              ) : (
+                <Link
+                  to={"/profile/" + data.dream.author}
+                  className="flex justify-between items-center space-x-3"
+                >
+                  <div className="w-6 h-6 bg-gray-400 rounded-full" />
+                  <div className="">{authorName}</div>
+                </Link>
+              )}
 
               <span>
                 {

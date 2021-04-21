@@ -20,7 +20,11 @@ export const WelcomeCard = () => (
               manifestations de ton imagination !
             </p>
           </div>
-          <Button extraClasses="px-8 py-2 font-bold text-md" uppercase>
+          <Button
+            link="/add-dream"
+            extraClasses="px-8 py-2 font-bold text-md"
+            uppercase
+          >
             Il faut que je te raconte ce rêve...
           </Button>
         </div>

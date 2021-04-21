@@ -3,6 +3,9 @@ import { User } from "../../types/API/UserType";
 import { UserContext } from "../../contexts/UserContext";
 import ViewUserMainInformations from "./ViewUserMainInformations";
 import EditUserInformations from "./EditUserInformations";
+import { useQuery } from "../../hooks/useQuery";
+import { Dream } from "../../types/API/DreamType";
+import axios from "axios";
 
 type Props = {
   profileUser: User;
@@ -15,6 +18,10 @@ export default function UserMainInformations({
 }: Props) {
   const { user } = useContext(UserContext);
   const [editing, setEditing] = useState(false);
+  const { data } = useQuery<{ dreams: Dream[] }>(
+    `/dreams?author=${profileUser.id}`,
+    axios.get
+  );
 
   const isConnectedUserProfile = () => {
     return user && profileUser ? profileUser.id === user.id : false;
@@ -42,9 +49,7 @@ export default function UserMainInformations({
       <div className="flex font-bold mt-4">
         <div>
           <span className="text-profile-cyan text-6xl">
-            {profileUser.dreams
-              ? profileUser.dreams.length
-              : Math.floor(Math.random() * 30)}
+            {data?.dreams.length ? data?.dreams.length : 0}
           </span>
           <span className="ml-2 text-xl">Rêves</span>
         </div>
