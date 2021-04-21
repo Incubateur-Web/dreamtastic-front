@@ -48,7 +48,7 @@ export const CategoryPicker = ({ options, onChange, limit = 0 }: Props) => {
 
       {limit === 0 || pickedOptions.length < limit ? (
         <AddButton>
-          <div className="absolute top-6 right-0 bg-white shadow-md p-0.5 rounded-md z-10">
+          <div className="absolute top-6 left-0 bg-white shadow-md p-0.5 rounded-md z-10 max-h-44 min-w-15 overflow-auto border">
             {options
               .filter((opt) => !pickedOptions.includes(opt.id))
               .map((opt) => {
