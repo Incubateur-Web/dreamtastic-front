@@ -1,11 +1,14 @@
 import { DreamPreviewCard } from "../components/dreams/DreamPreviewCard";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { ShuffleIcon } from "../components/icons/ShuffleIcon";
-import { SearchDreams } from "../components/search/SearchDreams";
+import {
+  SearchDreams,
+  SearchFormFields,
+} from "../components/search/SearchDreams";
 import { TopBg } from "../components/background/TopBg";
 import { useQuery } from "../hooks/useQuery";
 import axios from "axios";
 import { Dream } from "../types/API/DreamType";
+import { useState } from "react";
 
 type DreamListProps = {
   query?: { [k: string]: string };
@@ -22,9 +25,12 @@ export function DreamsList({ query = {} }: DreamListProps) {
     url.toString(),
     axios.get
   );
+
   if (error) return <DefaultLayout>{error}</DefaultLayout>;
   if (loading) return <DefaultLayout></DefaultLayout>;
   if (!data) return <DefaultLayout>Failed</DefaultLayout>;
+
+  console.log(data);
 
   return (
     <div className="flex flex-wrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0 -mx-2">
@@ -36,21 +42,42 @@ export function DreamsList({ query = {} }: DreamListProps) {
 }
 
 export default function DreamsPage() {
+  const [query, setQuery] = useState<{ [k: string]: string }>();
+
+  const handleSearchChange = (values: SearchFormFields) => {
+    setQuery((prev) => {
+      const newState = { ...prev };
+
+      values["topic-dream"]
+        ? (newState.topics = values["topic-dream"])
+        : delete newState.topics;
+
+      values["type-dream"]
+        ? (newState.type = values["type-dream"])
+        : delete newState.type;
+
+      console.log(values);
+      console.log(newState);
+
+      return { ...newState };
+    });
+  };
+
   return (
     <DefaultLayout>
       <TopBg />
       <div className="container mx-auto space-y-11 md:space-y-20 px-3 md:px-0 z-10">
         <div className="flex flex-col md:flex-row items-center w-full space-y-4 space-x-0 md:space-x-4 md:space-y-0">
-          <SearchDreams />
-          <div
+          <SearchDreams onChange={handleSearchChange} />
+          {/* <div
             className="flex space-x-2 border-b-2 p-1 border-main z-10 font-semibold"
             role="button"
           >
             <ShuffleIcon fill="#6bdabe" />
             <span>Surprenez-moi</span>
-          </div>
+          </div> */}
         </div>
-        <DreamsList />
+        <DreamsList query={query} />
       </div>
     </DefaultLayout>
   );

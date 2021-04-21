@@ -5,15 +5,31 @@ import clsx from "clsx";
 import { useClickAway } from "react-use";
 import { TypeContext } from "../../contexts/TypeContext";
 import { TopicsContext } from "../../contexts/TopicsContext";
+import { useForm } from "react-hook-form";
 
-export function SearchDreams() {
+export interface SearchFormFields {
+  "type-dream": string;
+  "topic-dream": string;
+}
+
+interface SearchDreamsProps {
+  onChange: (formDatas: SearchFormFields) => void;
+}
+
+export function SearchDreams({ onChange }: SearchDreamsProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const { register, handleSubmit } = useForm<SearchFormFields>();
 
   const { types } = useContext(TypeContext);
   const { topics } = useContext(TopicsContext);
 
   useClickAway(ref, () => setOpen(false));
+
+  const handleFormSubmit = handleSubmit((values) => {
+    onChange(values);
+    setOpen(false);
+  });
 
   return (
     <div className="relative w-full md:w-1/2 h-12">
@@ -41,7 +57,7 @@ export function SearchDreams() {
             "top-12 left-0 right-0 bg-white z-40 border-t"
           )}
         >
-          <div className="divide-y">
+          <form className="divide-y" onSubmit={handleFormSubmit}>
             <div className="flex">
               <div className="text-lg w-1/3 p-4 border-r">
                 <span className="text-violet text-xl font-bold uppercase">
@@ -51,7 +67,12 @@ export function SearchDreams() {
                 <div className="flex flex-col">
                   {types.map((type) => (
                     <label className="space-x-2" key={type.id}>
-                      <input type="checkbox" />
+                      <input
+                        ref={register}
+                        type="radio"
+                        name="type-dream"
+                        value={type.id}
+                      />
                       <span>{type.name}</span>
                     </label>
                   ))}
@@ -62,24 +83,34 @@ export function SearchDreams() {
                   Thème
                 </span>
                 <div className="flex flex-wrap">
-                  {topics.map((type) => (
-                    <label className="space-x-2 w-1/2" key={type.id}>
-                      <input type="checkbox" />
-                      <span>{type.name}</span>
+                  {topics.map((topic) => (
+                    <label className="space-x-2 w-1/2" key={topic.id}>
+                      <input
+                        ref={register}
+                        type="radio"
+                        name="topic-dream"
+                        value={topic.id}
+                      />
+                      <span>{topic.name}</span>
                     </label>
                   ))}
                 </div>
               </div>
             </div>
             <div className="pt-6 pb-4 px-4 space-x-6 flex justify-end items-center">
-              <span role="button" className="text-violet underline">
-                Effacer les filtres
-              </span>
-              <button className="rounded-full bg-dark-violet hover:bg-light-violet text-white font-bold px-6 py-2 uppercase focus:outline-none">
+              <button type="reset" className="focus:outline-none">
+                <span role="button" className="text-violet underline">
+                  Effacer les filtres
+                </span>
+              </button>
+              <button
+                type="submit"
+                className="rounded-full bg-dark-violet hover:bg-light-violet text-white font-bold px-6 py-2 uppercase focus:outline-none"
+              >
                 Appliquer
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
