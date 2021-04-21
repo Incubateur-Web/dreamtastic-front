@@ -36,7 +36,6 @@ export default function AddDreamPage() {
       author: user?.id,
     });
 
-    console.log(data);
     push(`/dream/${data.id}`);
   });
 
