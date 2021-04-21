@@ -69,6 +69,7 @@ const DropDownMenu = ({ show }: DropdownMenuProps) => {
         onClick={() => {
           setUser(undefined!);
           setTokens({});
+          window.location.href = "/";
         }}
         label="Deconnexion"
         icon={<FontAwesomeIcon icon={faSignOutAlt} />}

@@ -30,7 +30,7 @@ export const UserCard = (user: Partial<User>) => {
               <p className="text-xs italic">
                 Membre depuis le{" "}
                 {format(
-                  new Date(user.createdAt ?? Date.now()),
+                  new Date(user.createdAt ? user.createdAt : Date.now()),
                   CREATED_AT_FORMAT,
                   { locale }
                 )}

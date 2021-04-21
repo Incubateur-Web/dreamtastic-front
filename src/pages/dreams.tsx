@@ -30,8 +30,6 @@ export function DreamsList({ query = {} }: DreamListProps) {
   if (loading) return <DefaultLayout></DefaultLayout>;
   if (!data) return <DefaultLayout>Failed</DefaultLayout>;
 
-  console.log(data);
-
   return (
     <div className="flex flex-wrap overflow-x-auto md:overflow-hidden pb-3 md:pb-0 -mx-2">
       {data.dreams.map((dream) => (
